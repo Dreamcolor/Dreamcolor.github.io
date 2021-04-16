@@ -2,12 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dreamcolor.net</id>
     <title>Dreamcolor&apos;s Cote</title>
-    <updated>2021-04-16T04:07:55.832Z</updated>
+    <updated>2021-04-16T04:35:46.812Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dreamcolor.net"/>
     <link rel="self" href="https://dreamcolor.net/atom.xml"/>
-    <subtitle>谗夫毁士，如寸云蔽日，不久自明；&lt;br/&gt;
-媚子阿人，似隙风侵肌，不觉其损！</subtitle>
+    <subtitle>谗夫毁士，如寸云蔽日，不久自明；媚子阿人，似隙风侵肌，不觉其损！</subtitle>
     <logo>https://dreamcolor.net/images/avatar.png</logo>
     <icon>https://dreamcolor.net/favicon.ico</icon>
     <rights>All rights reserved 2021, Dreamcolor&apos;s Cote</rights>
