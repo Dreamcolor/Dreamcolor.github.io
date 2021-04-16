@@ -2,44 +2,853 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dreamcolor.net</id>
     <title>Dreamcolor&apos;s Cote</title>
-    <updated>2021-04-16T04:46:37.403Z</updated>
+    <updated>2021-04-16T06:30:03.687Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dreamcolor.net"/>
     <link rel="self" href="https://dreamcolor.net/atom.xml"/>
-    <subtitle>谗夫毁士，如寸云蔽日，不久自明；媚子阿人，似隙风侵肌，不觉其损！</subtitle>
+    <subtitle>谗夫毁士，如寸云蔽日，不久自明；&lt;br/&gt;媚子阿人，似隙风侵肌，不觉其损！</subtitle>
     <logo>https://dreamcolor.net/images/avatar.png</logo>
     <icon>https://dreamcolor.net/favicon.ico</icon>
     <rights>All rights reserved 2021, Dreamcolor&apos;s Cote</rights>
     <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://dreamcolor.net/post/hello-gridea/</id>
-        <link href="https://dreamcolor.net/post/hello-gridea/">
+        <title type="html"><![CDATA[我又回来了]]></title>
+        <id>https://dreamcolor.net/post/back-again/</id>
+        <link href="https://dreamcolor.net/post/back-again/">
         </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+        <updated>2019-12-19T13:48:54.000Z</updated>
+        <content type="html"><![CDATA[<p>这两天心血来潮访问了一下自己闲置很久的域名。发现原本指向的地址无法访问了。最后发现是 DNS 服务器的问题。然后进一步查看才知道，原来国内的 DNSPOD 需要域名必须备案才可以设置解析地址，原本的地址信息已经全消失了。那好吧，我迁移到国外服务器总可以了吧。经过一番鼓捣，算是设置好了。</p>
+<p>然后想一想，索性就把博客恢复了吧，反正指向的地址也是 GitHub Pages，而且用的博客程序还是 Hexo。这么正好的事儿，不整一下就浪费了。</p>
+<p>恢复的时候才想起来，我这个域名注册了快 15 年了。中间断断续续的更新，断断续续的关停。貌似从来也没关心过用户阅读体验。都是想写什么就随便写写，不想写的时候一扔就是不一定多久。回顾一下当年青涩的自己，貌似好多事情都记录在了这里，而不堪回首的往事更是历历在目。</p>
+<p>之前的博客程序是 WordPress，迁移的时候懒得把那些过时的东西迁来迁去了，全当是个新的开始。然后开始了以后又停更了。这次接着恢复的引子更新一下。希望这次别停。（我也不想啊，可实力它不允许啊！！！）</p>
+<p>不啰嗦了，在时光机里面找了一些当年博客的影子。就当怀旧吧。2005 年才把域名抢注到手，懒得截图了，都是一些陈年旧事。从抓取的密度基本可以看出来博客更新勤快与否和年份的关系。估计更新比较快的那几年，基本也就是做 WordPress 翻译的那几年吧。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[从 WordPress 迁移到 Hexo 啦！]]></title>
+        <id>https://dreamcolor.net/post/wordpress-to-hexo/</id>
+        <link href="https://dreamcolor.net/post/wordpress-to-hexo/">
+        </link>
+        <updated>2016-12-27T14:28:51.000Z</updated>
+        <summary type="html"><![CDATA[<p>如果您是在搜索引擎里面搜索如何迁移而访问到本文。那么让您失望了，这并不是一篇技术类文章，而是本窝的一个通知而已。因为迁移的方法 Hexo 官网已经提供了。迁移过程中我只遇到了一个问题，就是文章的标题中如果有半角的引号，会导致导入文章失败。</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+        <content type="html"><![CDATA[<p>如果您是在搜索引擎里面搜索如何迁移而访问到本文。那么让您失望了，这并不是一篇技术类文章，而是本窝的一个通知而已。因为迁移的方法 Hexo 官网已经提供了。迁移过程中我只遇到了一个问题，就是文章的标题中如果有半角的引号，会导致导入文章失败。</p>
 <!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+<p>您看到这了，也许会有点儿奇怪。既然说是迁移，那之前的文章都哪里去了呢？好吧。迁移完了以后，把所有文章导出成了 MD 文件，然后让我封存了起来。算是对这些年的经历做个回忆。貌似好多都是无病呻吟的无聊内容，就算迁移过来，也是耽误大家时间，索性就不导过来了。有时间，把有点儿内涵的东西整理后再发出来就好了。</p>
+<p>在网上总看到有人问如何优雅的写博客。我也照猫画虎的学着去装一波 B 用 Markdown 去写。优雅与否，看意境。但没那么多累赘的干扰倒是真的。把注意力都集中在字里行间，关注的是内容。我不需要那么炫酷的效果和功能，只要有个顺手的内容发布平台就好。这也是把博客程序从 WordPress 换成 Hexo 的原因。说实话迁移没用多长时间，可决心却下了好久。毕竟之前翻译了三年多的语言包，有点儿舍不得。这次把 WordPress 相关的内容几乎都去掉，但对 WP 的喜爱没有减少。只是......我真用不上你了呢 &gt;_&lt;。</p>
+<p>不想再去罗列用过哪些博客程序了，Who care。珍惜眼前就好。只希望这次折腾完以后，自己能够抽出些时间多写一些有点儿营养的文章出来。目前熟悉 Hexo 中......</p>
+<p>哦对了，本文是在 Android 手机上用 iA  Writer 编写的。据说 Apple 系的要花钱，而 Google Play 上是免费的。这是闹哪样？先用着，反正有 MarkdownX 当替补。是不有点儿拿豆包不当干粮的架势？嘿嘿。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[检查 GPIO 通道的用途]]></title>
+        <id>https://dreamcolor.net/post/rpi-gpio-module-checking-function-of-gpio-channels/</id>
+        <link href="https://dreamcolor.net/post/rpi-gpio-module-checking-function-of-gpio-channels/">
+        </link>
+        <updated>2014-03-16T08:09:51.000Z</updated>
+        <summary type="html"><![CDATA[<p><strong>更新日志：</strong></p>
+<ul>
+<li>2016 年 12 月 31 日更新：根据 2015 年 2 月 18 日更新的官方文档补充了缺失部分翻译。</li>
+<li>2014 年 3 月 16 日更新：根据 2014 年 4 月 24 日更新的官方文档完成了初步翻译。</li>
+</ul>
+]]></summary>
+        <content type="html"><![CDATA[<p><strong>更新日志：</strong></p>
+<ul>
+<li>2016 年 12 月 31 日更新：根据 2015 年 2 月 18 日更新的官方文档补充了缺失部分翻译。</li>
+<li>2014 年 3 月 16 日更新：根据 2014 年 4 月 24 日更新的官方文档完成了初步翻译。</li>
+</ul>
+<!-- more -->
+<p>本文会在适当的时间里进行增删改等操作，如果您对该文感兴趣，可以仅收藏本页。</p>
+<p>本文链接：<a href="http://dreamcolor.net/20140316/rpi-gpio-module-checking-function-of-gpio-channels/" title="检查 GPIO 通道的用途">检查 GPIO 通道的用途</a></p>
+<h2 id="gpio_functionchannel">gpio_function(channel)</h2>
+<p>用于显示 GPIO 通道的用途。<br>
+例如：</p>
+<pre><code class="language-python">import RPi.GPIO as GPIO
+
+GPIO.setmode(GPIO.BOARD)
+func = GPIO.gpio_function(pin)
+</code></pre>
+<p>将返回如下通道状态信息：<br>
+<strong>GPIO.INPUT、GPIO.OUTPUT、GPIO.SPI、GPIO.I2C、GPIO.PWM、GPIO.SERIAL、GPIO.UNKNOWN</strong></p>
+<h2 id="相关网站">相关网站</h2>
+<p>原文地址：<a href="https://sourceforge.net/p/raspberry-gpio-python/wiki/Checking%20function%20of%20GPIO%20channels/" title="RPi.GPIO module Checking function of GPIO channels">RPi.GPIO module Checking function of GPIO channels</a><br>
+项目地址：<a href="https://sourceforge.net/p/raspberry-gpio-python/" title="RPi.GPIO">RPi.GPIO</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[RPIO 文档翻译 - RPIO.PWM（利用 DMA 为 Raspberry Pi 实现 PWM）]]></title>
+        <id>https://dreamcolor.net/post/rpio-document-pwm-py/</id>
+        <link href="https://dreamcolor.net/post/rpio-document-pwm-py/">
+        </link>
+        <updated>2013-06-04T02:51:02.000Z</updated>
+        <summary type="html"><![CDATA[<p><strong>更新日志：</strong><br>
+2013 年 6 月 4 日更新：根据官方文档完成了初步翻译。<br>
+本文会在适当的时间里进行增删改等操作，如果您对该文感兴趣，可以仅收藏本页。<br>
+本文链接：<a href="http://dreamcolor.net/20130604/rpio-document-pwm-py/" title="RPIO 文档翻译 - RPIO.PWM（利用 DMA 为 Raspberry Pi 实现 PWM）">RPIO 文档翻译 - RPIO.PWM（利用 DMA 为 Raspberry Pi 实现 PWM）</a></p>
+]]></summary>
+        <content type="html"><![CDATA[<p><strong>更新日志：</strong><br>
+2013 年 6 月 4 日更新：根据官方文档完成了初步翻译。<br>
+本文会在适当的时间里进行增删改等操作，如果您对该文感兴趣，可以仅收藏本页。<br>
+本文链接：<a href="http://dreamcolor.net/20130604/rpio-document-pwm-py/" title="RPIO 文档翻译 - RPIO.PWM（利用 DMA 为 Raspberry Pi 实现 PWM）">RPIO 文档翻译 - RPIO.PWM（利用 DMA 为 Raspberry Pi 实现 PWM）</a></p>
+<!-- more -->
+<p><code>RPIO.PWM</code> 提供了利用 DMA 为 Raspberry Pi 实现 PWM 功能，使用板载的半硬件脉宽调制（PWM ）模块可精确到 1µs（微秒）。</p>
+<p>在 <code>RPIO.PWM</code> 中，您可以随意使用所有 15 个 DMA 通道，并且每个通道中可以使用任意个数 GPIO。当通过 DMA 实现 PWM 时，<code>RPIO.PWM</code> 几乎不消耗 CPU 资源，并且可以产生稳定的脉冲且分辨率非常高。<code>RPIO.PWM</code> 是使用 C 语言（<a href="https://github.com/metachris/RPIO/blob/master/source/c_pwm/">源代码</a>）编写的；可通过提供的封装包在 Python 中使用，甚至可以直接在您的 C 语言代码中使用。</p>
+<p><code>RPIO.PWM</code> 提供了手动控制任何东西的底层方案，甚至还为特殊用途准备的简化 PWM 辅助类库（比如：<code>RPIO.PWM.Servo</code>）。该模块目前还处于 beta 阶段，请将反馈发送至 chris@linuxuser.at。而且目前仅支持 BCM GPIO 编号方式。</p>
+<h2 id="示例">示例</h2>
+<p><code>PWM.Servo</code> 使用示例（使用默认的 20ms 子循环时长和默认的 10µs 脉宽增量粒度）：</p>
+<pre><code class="language-python">from RPIO import PWM
+
+servo = PWM.Servo()
+
+# 设置 GPIO 17 上的 servo 为 1200µs（1.2ms）
+servo.set_servo(17, 1200)
+
+# 设置 GPIO 17 上的 servo 为 2000µs（2.0ms）
+servo.set_servo(17, 2000)
+
+# 清除 GPIO 17 上的 servo
+servo.stop_servo(17)
+</code></pre>
+<p>使用底层 PWM 方案的示例：</p>
+<pre><code class="language-python">from RPIO import PWM
+
+# 设置 PWM 和 DMA 使用通道 0
+PWM.setup()
+PWM.init_channel(0)
+
+# 为子循环添加脉冲值
+PWM.add_channel_pulse(0, 17, 0, 50)
+PWM.add_channel_pulse(0, 17, 100, 50)
+
+# 停止通道 0 中指定 GPIO 上的 PWM
+PWM.clear_channel_gpio(0, 17)
+
+# 关闭所有 PWM 和 DMA 操作
+PWM.cleanup()
+</code></pre>
+<h2 id="rpiopwmservo">RPIO.PWM.Servo</h2>
+<p><code>RPIO.PWM.Servo</code> 类库的详细描述（来源自 <code>$ pydoc RPIO.PWM.Servo</code>）：</p>
+<pre><code>Servo 类库
+
+# 方案定义：
+
+__init__(self, dma_channel=0, subcycle_time_us=20000, pulse_incr_us=10)
+# 请确认 PWM 设置了正确的增量粒度和子循环时间。
+
+set_servo(self, gpio, pulse_width_us)
+# 为 GPIO 设置每个子循环重复一次的脉宽（默认为 20ms）。
+
+stop_servo(self, gpio)
+# 停止该 GPIO 的 servo 操作。
+</code></pre>
+<h2 id="rpiopwm">RPIO.PWM</h2>
+<p>底层 PWM 方案文档（来源自 <code>$ pydoc RPIO.PWM</code>）：</p>
+<pre><code>函数
+
+add_channel_pulse(dma_channel, gpio, start, width)
+# 为某个 DMA 通道中指定的 GPIO 设置脉冲（添加到子循环中）
+
+cleanup()
+# 停止所有 PWM 和 DMA 操作
+
+clear_channel(channel)
+# 清空某个通道中所有脉冲值
+
+clear_channel_gpio(channel, gpio)
+# 清空该 DMA 通道中指定 GPIO 上的值
+
+get_channel_subcycle_time_us(channel)
+# 以微秒为单位返回该通道子循环时间
+
+get_pulse_incr_us()
+# 以微秒为单位返回当前设置的宽脉增量粒度
+
+init_channel(channel, subcycle_time_us=20000)
+# 以微秒为单位设置某通道为特定的子循环时间
+
+is_channel_initialized(channel)
+# 如果该通道被初始化则返回 1，否则返回 0
+
+is_setup()
+# 如果调用了 setup(..) 则返回 1，否则返回 0
+
+print_channel(channel)
+# 打印特定通道的信息到标准输出设备
+
+set_loglevel(level)
+# 为该 PWM 模块设置 loglevel。
+# PWM.LOG_LEVEL_DEBUG 将记录所有信息，PWM.LOG_LEVEL_ERRORS 将只记录错误信息。
+
+setup(pulse_incr_us=10, delay_hw=0)
+# 任何通道工作之前，都需要调用一次 Setup。
+# 可选参数：
+# pulse_incr_us：宽脉增量粒度（默认为 10us）
+# delay_hw：PWM.DELAY_VIA_PWM（默认）或 PWM.DELAY_VIA_PCM
+
+常量
+
+DELAY_VIA_PCM = 1
+DELAY_VIA_PWM = 0
+LOG_LEVEL_DEBUG = 0
+LOG_LEVEL_ERRORS = 1
+PULSE_WIDTH_INCREMENT_GRANULARITY_US_DEFAULT = 10
+SUBCYCLE_TIME_US_DEFAULT = 20000
+VERSION = '0.9.1'
+</code></pre>
+<h2 id="扩展讲解">扩展讲解</h2>
+<p>可以查看 <a href="https://github.com/metachris/RPIO/blob/master/source/c_pwm/">Github 上的 C 语言源程序</a>获得更多细节。</p>
+<h3 id="子循环">子循环</h3>
+<p>每个 DMA 通道都设置了一个特定的子循环，包括添加了脉冲设置，并且会反复执行。伺服系统，通常使用 20ms 的子循环时间，并且每秒重复 50 次。您可以为多个 GPIO 添加脉冲设置，也可以为某 GPIO 设置多个脉冲值。子循环时间不能低于 2ms。</p>
+<p>如需获得更多关于子循环的信息，可以看下面的示例。左边的示波器图像放大显示了一个子循环，右边的图像整体显示了它们的重复情况。</p>
+<h3 id="脉宽增量粒度">脉宽增量粒度</h3>
+<p>脉宽增量粒度（默认为 10µs）应用于所有 DMA 通道（当使用 PWM 计时硬件时）。通过制定一个 <code>start</code> 和 <code>width</code> 参数，为子循环添加脉冲设置，两者都可以拥有多种粒度。例如，设置 500µs 的脉冲值以及粒度设置为 10µs，那么您将需要设置脉宽为 50（50 * 10µs = 500µs）。</p>
+<p>由于使用的是 PWM 硬件，脉宽增量粒度是<strong>系统的全局设置</strong>，因此您不能在同一时间内使用不同的粒度设置，尽管在不同的进程中也是如此。</p>
+<h2 id="示波器示例">示波器示例</h2>
+<p>在示波器图像中，GPIO 15 为蓝色的通道，GPIO 17 为黄色的通道。左边的示波器图像显示单个子循环，右边的图像整体显示了它们的重复情况。首先我们将 PWM.Servo 的子循环设置为默认的 20ms，以及脉宽增量粒度为 10µs：</p>
+<pre><code class="language-python">from RPIO import PWM
+servo = PWM.Servo()
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://dreamcolor.net/post-images/1616902719959.png" alt="" loading="lazy"></figure>
+<p>现在设置 GPIO 15 上每 20ms 脉冲为 4000us（4ms）：</p>
+<pre><code class="language-python">servo.set_servo(15, 4000)
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://dreamcolor.net/post-images/1616902736697.png" alt="" loading="lazy"></figure>
+<p>现在设置 GPIO 17 上的脉冲为 1000µs（1ms）</p>
+<pre><code class="language-python">servo.set_servo(17, 1000)
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="https://dreamcolor.net/post-images/1616902750657.png" alt="" loading="lazy"></figure>
+<p>我们可以使用底层 PWM 模块为子循环进一步设置脉冲。该设置完成了脉宽增量粒度的设置（<code>start=200*10µs=2000µs, width=100*10µs=1000µs</code>）：</p>
+<pre><code class="language-python">PWM.add_channel_pulse(0, 17, start=200, width=100)
+</code></pre>
+<figure data-type="image" tabindex="4"><img src="https://dreamcolor.net/post-images/1616902762824.png" alt="" loading="lazy"></figure>
+<p>原文地址：<a href="http://pythonhosted.org/RPIO/pwm_py.html" title="RPIO.PWM, PWM via DMA for the Raspberry Pi">RPIO.PWM, PWM via DMA for the Raspberry Pi</a><br>
+项目地址：<a href="http://pythonhosted.org/RPIO/" title="RPIO’s documentation!">RPIO’s documentation!</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[RPIO 文档翻译 - RPIO（Python 模块）]]></title>
+        <id>https://dreamcolor.net/post/rpio-document-rpio-py/</id>
+        <link href="https://dreamcolor.net/post/rpio-document-rpio-py/">
+        </link>
+        <updated>2013-06-02T05:09:39.000Z</updated>
+        <summary type="html"><![CDATA[<p><strong>更新日志：</strong><br>
+2013 年 6 月 2 日更新：根据官方文档完成了初步翻译。<br>
+本文会在适当的时间里进行增删改等操作，如果您对该文感兴趣，可以仅收藏本页。<br>
+本文链接：<a href="http://dreamcolor.net/20130602/rpio-document-rpio-py/" title="RPIO 文档翻译 - RPIO（Python 模块）">RPIO 文档翻译 - RPIO（Python 模块）</a></p>
+]]></summary>
+        <content type="html"><![CDATA[<p><strong>更新日志：</strong><br>
+2013 年 6 月 2 日更新：根据官方文档完成了初步翻译。<br>
+本文会在适当的时间里进行增删改等操作，如果您对该文感兴趣，可以仅收藏本页。<br>
+本文链接：<a href="http://dreamcolor.net/20130602/rpio-document-rpio-py/" title="RPIO 文档翻译 - RPIO（Python 模块）">RPIO 文档翻译 - RPIO（Python 模块）</a></p>
+<!-- more -->
+<p>RPIO.py 相对于 RPi.GPIO 在各个方面都有所扩展，并且默认使用 BCM GPIO 编号方式。</p>
+<h2 id="gpio-和-tcp-中断">GPIO 和 TCP 中断</h2>
+<p><code>RPIO</code> 可以对两种中断进行监听：<code>GPIO</code> 和 <code>TCP</code>。某特定 GPIO 的输入状态改变时将产生 GPIO 中断。某 TCP socket 客户端发送信息时将产生 TCP 中断。</p>
+<p>RPIO.<strong>wait_for_interrupts</strong>(threaded=False, epoll_timeout=1)</p>
+<ul>
+<li>这是阻隔功能的主循环，当启用后，将会对中断进行监听，并且启用您自定义的回调操作。在您脚本的某个地方，您需要使用它来接收中断回调。这种阻隔方式非常适合于“让您的脚本一直循环运行”。</li>
+<li>使用 <code>threaded=True</code> 参数，使它在您的脚本运行于主线程时，使其在后台操作（RPIO 在您的脚本退出时，会自动关闭该线程）：<code>RPIO.wait_for_interrupts(threaded=True)</code></li>
+</ul>
+<h3 id="gpio-中断">GPIO 中断</h3>
+<p>中断被用于接收当 GPIO 状态发生改变时来自于内核的通知。其优点是消耗 CPU 资源非常少，通知时间非常短，并且可在特定临界值转换（<code>rising</code>、<code>falling</code>、<code>both</code>）时被触发的能力。您还可以设置软件上拉或下拉电阻。</p>
+<p>RPIO.<strong>add_interrupt_callback</strong>(gpio_id, callback, edge='both', pull_up_down=RPIO.PUD_OFF, threaded_callback=False, debounce_timeout_ms=None)</p>
+<ul>
+<li>
+<p>添加一个回调用于接收当 GPIO 状态从 0 到 1（反之亦然）时的通知。</p>
+<ul>
+<li>可能用到的临界值为 <code>rising</code>、<code>falling</code>、<code>both</code>（默认）。</li>
+<li>可能用到的 <code>pull_up_down</code> 值为：<code>RPIO.PUD_UP</code>、<code>RPIO.PUD_DOWN</code>、<code>RPIO.PUD_OFF</code>（默认）。</li>
+<li>如果 <code>threaded_callback</code> 为 <code>True</code>，回调将开始与线程内。否则直到其结束后，回调才会从中断等待状态下阻断 RPIO（在这期间，不会有其它回调操作）。</li>
+<li>如果设置了 <code>debounce_timeout_ms</code>，那么从上次中断结束后，需要等到您指定的毫秒数后才会再次执行中断回调操作。可以根据您的需求进行设置（通常为 10ms 到 100ms 之间）。</li>
+</ul>
+</li>
+<li>
+<p>回调功能有两个参数，分别为：GPIO 编号和值。（值为整数，<code>0</code>（Low）或 <code>1</code>（High））。回调操作通常写法为：<code>def gpio_callback(gpio_id, value):</code></p>
+</li>
+</ul>
+<p>RPIO.<strong>del_interrupt_callback</strong>(gpio_id)<br>
+移除特定 GPIO 上的回调操作。</p>
+<h3 id="tcp-socket-中断">TCP Socket 中断</h3>
+<p>仅使用这一种方法就可以方便的为入站 TCP 连接打开端口：</p>
+<p>RPIO.<strong>add_tcp_callback</strong>(port, callback, threaded_callback=False)</p>
+<ul>
+<li>
+<p>添加 socket 服务器回调，它会在某个已连接的 socket 客户端发送数据时开始执行。这被用于 RPIO 在特定端口创建 TCP 服务器 socket。当 <code>RPIO.wait_for_interrupts()</code> 运行时，将接受入站连接。回调必须指定两个参数：socket 和 message（例如：<code>def callback(socket, msg)</code>）。</p>
+</li>
+<li>
+<p>回调可以使用 socket 参数将值发回到客户端（例如：<code>socket.send(&quot;hi there\n&quot;)</code>）。如果要关闭某客户端的连接，可使用 <code>RPIO.close_tcp_client(..)</code>。客户端可以使用相同的方式关闭连接，或者发送到服务器一个空信息也会同样断开连接。</p>
+</li>
+<li>
+<p>您可以使用 <code>socket.getpeername()</code> 来获得客户端的 IP 地址。<a href="http://docs.python.org/2/library/socket.html" title="Socket object documentation">详情可参见 Socket 对象文档</a>。</p>
+</li>
+</ul>
+<p>您可以输入命令 <code>$ telnet &lt;your-ip&gt; &lt;your-port&gt;</code> 对 TCP socket 中断进行测试（例如：<code>$ telnet localhost 8080</code>）。空字符串将通知服务器断开与客户端的连接（比如，您在 telnet 中按下回车键，您得连接将被断开）。</p>
+<p>RPIO.<strong>close_tcp_client</strong>(self, fileno)<br>
+关闭客户端 socket 连接并从 epoll 中移除。您可以使用回调中的 <code>RPIO.close_tcp_client(socket.fileno())</code> 来实现。</p>
+<h3 id="示例">示例</h3>
+<p>以下示例将示范如何监听某些 GPIO 和 TCP 中断：</p>
+<pre><code class="language-python">import RPIO
+
+def gpio_callback(gpio_id, val):
+    print(&quot;gpio %s: %s&quot; % (gpio_id, val))
+
+def socket_callback(socket, val):
+    print(&quot;socket %s: '%s'&quot; % (socket.fileno(), val))
+    socket.send(&quot;echo: %s\n&quot; % val)
+
+# GPIO 中断回调
+RPIO.add_interrupt_callback(7, gpio_callback)
+RPIO.add_interrupt_callback(9, gpio_callback, pull_up_down=RPIO.PUD_UP)
+
+# 回调服务器端口 8080 TCP socket
+RPIO.add_tcp_callback(8080, socket_callback)
+
+# 阻断主 epoll 循环
+RPIO.wait_for_interrupts()
+</code></pre>
+<p>在进程内接收回调（并且不对 RPIO 返回到等待中断状态进行阻隔），需要在添加时将 <code>threaded_callback</code> 设置为 <code>True</code>：</p>
+<pre><code class="language-python"># 用于 GPIO 中断
+RPIO.add_interrupt_callback(7, do_something, threaded_callback=True)
+
+# 用户 socket 中断
+RPIO.add_tcp_callback(8080, socket_callback, threaded_callback=True)
+</code></pre>
+<p>去除 GPIO 中断抖动，您可以添加 <code>debounce_timeout_ms</code> 参数到 <code>add_interrupt_callback(..</code>) 中。例如：</p>
+<pre><code class="language-python">RPIO.add_interrupt_callback(7, do_something, debounce_timeout_ms=100)
+</code></pre>
+<p><code>wait_for_interrupts()</code> 对中断和调度进行监听。您可以添加 <code>threaded=True</code> 参数，使其运行于一个线程中，使您的脚本继续运行。从版本 v0.10.0 开始，当您的脚本退出后，RPIO 已经可以很好的关闭所有操作了。</p>
+<pre><code class="language-python">RPIO.wait_for_interrupts(threaded=True)
+</code></pre>
+<p>停止 <code>wait_for_interrupts(..)</code> 可以通过调用 <code>RPIO.stop_waiting_for_interrupts()</code> 来实现。</p>
+<h2 id="gpio-输入和输出">GPIO 输入和输出</h2>
+<p>RPIO 对 <a href="http://dreamcolor.net/20130525/rpi-gpio-module-basics/" title="RPi.GPIO 模块使用基础">RPi.GPIO</a> 进行了扩展，所有输入和输出的工作方式都是相同的：</p>
+<pre><code class="language-python">import RPIO
+
+# 设置无上拉电阻输入通道
+RPIO.setup(7, RPIO.IN)
+
+# 设置有上拉电阻输入通道。可以为：
+# PUD_UP、PUD_DOWN、PUD_OFF（默认）
+RPIO.setup(7, RPIO.IN, pull_up_down=RPIO.PUD_UP)
+
+# 读取 GPIO 7 的输入值
+input_value = RPIO.input(7)
+
+# 设置 GPIO 输出通道
+RPIO.setup(8, RPIO.OUT)
+
+# 设置 GPIO 8 的值为 High
+RPIO.output(8, True)
+
+# 设置输出通道及初始值
+RPIO.setup(8, RPIO.OUT, initial=RPIO.LOW)
+
+# 更改为 BOARD 编号方式
+RPIO.setmode(RPIO.BOARD)
+
+# 在通道 17 上设置软件上拉电阻
+RPIO.set_pullupdn(17, RPIO.PUD_UP) # RPIO 新增功能
+
+# 获得通道 8 的函数
+RPIO.gpio_function(8)
+
+# 复位所有由该程序设置过的通道，
+# 并清除 GPIO 中断接口
+RPIO.cleanup()
+</code></pre>
+<p>您可以在现有代码中使用 RPIO 直接替换 RPi.GPIO：</p>
+<pre><code class="language-python">import RPIO as GPIO 
+# （如果您之前使用的是“import RPi.GPIO as GPIO”）
+</code></pre>
+<p>如果想获得更多使用方法及常量的讲解，可以运行 <code>$ sudo pydoc RPIO</code>，或者在 Python 中使用帮助功能：</p>
+<pre><code class="language-python">import RPIO
+help(RPIO)
+</code></pre>
+<h2 id="日志输出">日志输出</h2>
+<p>开启 RPIO 日志输出，需在引入 RPIO 之前先引入 <code>logging</code> 函数并设置日志级别为 <code>DEBUG</code>：</p>
+<pre><code class="language-python">import logging
+log_format = '%(levelname)s | %(asctime)-15s | %(message)s'
+logging.basicConfig(format=log_format, level=logging.DEBUG)
+import RPIO
+</code></pre>
+<h2 id="对-rpigpio-的扩展">对 RPi.GPIO 的扩展</h2>
+<p>更多可用常量</p>
+<ul>
+<li><code>RPIO.RPI_REVISION</code> - 当前主板的修订版本（1 或者 2）</li>
+<li><code>RPIO.RPI_REVISION_HEX</code> - CPU 的 16 进制修订码（<code>0002</code> 到 <code>000f</code>）</li>
+</ul>
+<p>更多可用功能</p>
+<ul>
+<li><code>RPIO.gpio_function(gpio_id)</code> - 返回 GPIO 当前的设置（<code>IN、OUT、ALT0</code>）</li>
+<li><code>RPIO.set_pullupdn(gpio_id, pud)</code> - 在 GPIO 上设置上拉或下拉电阻</li>
+<li><code>RPIO.forceinput(gpio_id)</code> - 无需调用 setup() 直接读取任何 GPIO 上的值</li>
+<li><code>RPIO.forceoutput(gpio_id, value)</code> - 无需调用 setup() 直接为 GPIO 写入值（**警告：**该功能可能会损坏您的 Raspberry Pi）</li>
+<li><code>RPIO.sysinfo()</code> - 返回 Raspberry Pi 系统信息（<code>hex_rev, model、revision、mb-ram、maker</code>）</li>
+<li><code>RPIO.version()</code> - 返回 RPIO 信息<code>（version_rpio、version_cgpio）</code></li>
+</ul>
+<p>中断处理</p>
+<ul>
+<li><code>RPIO.add_interrupt_callback(gpio_id, callback, edge='both', pull_up_down=RPIO.PUD_OFF, threaded_callback=False, debounce_timeout_ms=None)</code></li>
+<li><code>RPIO.add_tcp_callback(port, callback, threaded_callback=False)</code></li>
+<li><code>RPIO.del_interrupt_callback(gpio_id)</code></li>
+<li><code>RPIO.close_tcp_client(fileno)</code></li>
+<li><code>RPIO.wait_for_interrupts(threaded=False, epoll_timeout=1)</code></li>
+<li><code>RPIO.stop_waiting_for_interrupts()</code></li>
+<li>操控 <code>epoll</code></li>
+</ul>
+<p>原文地址：<a href="http://pythonhosted.org/RPIO/rpio_py.html" title="RPIO, the Python module">RPIO, the Python module</a><br>
+项目地址：<a href="http://pythonhosted.org/RPIO/" title="RPIO’s documentation!">RPIO’s documentation!</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[RPIO 文档翻译 - rpio（命令行工具）]]></title>
+        <id>https://dreamcolor.net/post/rpio-document-rpio-cmd/</id>
+        <link href="https://dreamcolor.net/post/rpio-document-rpio-cmd/">
+        </link>
+        <updated>2013-05-31T07:11:38.000Z</updated>
+        <summary type="html"><![CDATA[<p><strong>更新日志：</strong><br>
+2013 年 5 月 31 日更新：根据官方文档完成了初步翻译。<br>
+本文会在适当的时间里进行增删改等操作，如果您对该文感兴趣，可以仅收藏本页。<br>
+本文链接：<a href="http://dreamcolor.net/20130531/rpio-document-rpio-cmd/" title="RPIO 文档翻译 - rpio（命令行工具）">RPIO 文档翻译 - rpio（命令行工具）</a></p>
+]]></summary>
+        <content type="html"><![CDATA[<p><strong>更新日志：</strong><br>
+2013 年 5 月 31 日更新：根据官方文档完成了初步翻译。<br>
+本文会在适当的时间里进行增删改等操作，如果您对该文感兴趣，可以仅收藏本页。<br>
+本文链接：<a href="http://dreamcolor.net/20130531/rpio-document-rpio-cmd/" title="RPIO 文档翻译 - rpio（命令行工具）">RPIO 文档翻译 - rpio（命令行工具）</a></p>
+<!-- more -->
+<p><code>rpio</code> 包括两个命令行工具，其允许您对系统中所有 GPIO 进行监控和操作（包括其它进程使用到的端口）。默认情况使用的是 BCM GPIO 编号方式。</p>
+<ul>
+<li><code>rpio</code> - 监控和操作 GPIO 的命令行工具</li>
+<li><code>rpio-curses</code> - 终端窗口中拥有图形用户界面的 <code>rpio</code></li>
+</ul>
+<h2 id="rpio-curses">rpio-curses</h2>
+<p><code>rpio-curses</code> 是一个在终端窗口中对 GPIO 进行监控和控制的图形用户界面。从版本 0.8.4 开始，其已成为 RPIO 的一部分。使用 <code>rpio-curses</code> 您可以查看主板上所有 GPIO 的功能和状态，并可进行参数的修改。列表将每秒钟更新一次，以用来监控您是否做了某些修改。您可以在命令行中输入以下命令启动 <code>rpio-curses</code>：</p>
+<pre><code class="language-bash">$ rpio-curses
+</code></pre>
+<p>以下为几张 <code>rpio-curses</code> 运行时的屏幕截图：</p>
+<figure data-type="image" tabindex="1"><img src="https://dreamcolor.net/post-images/1616902595426.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://dreamcolor.net/post-images/1616902600896.png" alt="" loading="lazy"></figure>
+<h2 id="rpio">rpio</h2>
+<p><code>rpio --inspect-all</code>（或者 <code>-I</code>）可能是最常用的命令了，其将显示主板上所有 GPIO 的功能和状态。以下为 <code>rpio</code> 功能的概述：</p>
+<p>显示帮助页面：</p>
+<pre><code class="language-bash">$ rpio -h
+</code></pre>
+<p>监控 GPIO 的功能和状态（使用 <code>-i</code> 或 <code>--inspect</code>）：</p>
+<pre><code class="language-bash">$ rpio -i 7
+$ rpio -i 7,8,9
+$ rpio -i 1-9
+
+# 输出 `rpio -i 1-9` 的示例（不可用的端口将被忽略）：
+GPIO 2: ALT0   (1)
+GPIO 3: ALT0   (1)
+GPIO 4: INPUT  (0)
+GPIO 7: OUTPUT (0)
+GPIO 8: INPUT  (1)
+GPIO 9: INPUT  (0)
+</code></pre>
+<p>监控主板上所有 GPIO（使用 <code>-I</code> 或 <code>--inspect-all</code>）：</p>
+<pre><code class="language-bash">$ rpio -I
+</code></pre>
+<p>设置 GPIO 7 输出到 1 （或者 0）（使用 <code>-s</code> 或 <code>--set</code>）：</p>
+<pre><code class="language-bash">$ rpio -s 7:1
+</code></pre>
+<p>您只能写入到已被设置为 OUTPUT 的针脚中。您可以使用 <code>--setoutput &lt;gpio-id&gt;</code> 自行设置。</p>
+<p>等待 GPIO 上的中断事件（使用 <code>-w</code> 或 <code>--wait_for_interrupts</code>）。您可以使用参数：<code>:pullup</code>，<code>:pulldown</code> 或 <code>pulloff</code> 指定一个临界点（例如：<code>:rising</code>；默认为<code>both</code>）</p>
+<pre><code class="language-bash">$ rpio -w 7
+$ rpio -w 7:rising
+$ rpio -w 7:falling:pullup
+$ rpio -w 7:rising:pullup,17,18
+$ rpio -w 1-9
+</code></pre>
+<p>设置某针脚为 INPUT（在使用软件电阻时为可选项）：</p>
+<pre><code class="language-bash">$ rpio --setinput 7
+$ rpio --setinput 7:pullup
+$ rpio --setinput 7:pulldown
+</code></pre>
+<p>设置某针脚为 OUTPUT（在初始值（0 或 1）时为可选项）：</p>
+<pre><code class="language-bash">$ rpio --setoutput 8
+$ rpio --setoutput 8:1
+</code></pre>
+<p>显示 Raspberry Pi 的系统信息：</p>
+<pre><code class="language-bash">$ rpio --sysinfo
+
+# 输出示例：
+000e: Model B, Revision 2.0, RAM: 256 MB, Maker: Sony
+</code></pre>
+<p>您可以将 <code>RPIO</code> 软件包更新到最新版本（功能与 <code>easy_install -U RPIO</code> 相同）：</p>
+<pre><code class="language-bash">$ rpio --update-rpio
+</code></pre>
+<p>安装（更新） <code>rpio</code> 帮助页面：</p>
+<pre><code class="language-bash">$ rpio --update-man
+$ man rpio
+</code></pre>
+<p>原文地址：<a href="http://pythonhosted.org/RPIO/rpio_cmd.html" title="rpio, the command line tools">rpio, the command line tools</a><br>
+项目地址：<a href="http://pythonhosted.org/RPIO/" title="RPIO’s documentation!">RPIO’s documentation!</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[使用 RPi.GPIO 模块的脉宽调制（PWM）功能]]></title>
+        <id>https://dreamcolor.net/post/rpi-gpio-module-pwm/</id>
+        <link href="https://dreamcolor.net/post/rpi-gpio-module-pwm/">
+        </link>
+        <updated>2013-05-27T15:21:42.000Z</updated>
+        <summary type="html"><![CDATA[<p><strong>更新日志：</strong></p>
+<ul>
+<li>2016 年 12 月 31 日更新：根据 2013 年 12 月 21 日更新的官方文档补充了缺失部分翻译。</li>
+<li>2013 年 5 月 27 日更新：根据 2013 年 4 月 10 日更新的官方文档完成了初步翻译。</li>
+</ul>
+]]></summary>
+        <content type="html"><![CDATA[<p><strong>更新日志：</strong></p>
+<ul>
+<li>2016 年 12 月 31 日更新：根据 2013 年 12 月 21 日更新的官方文档补充了缺失部分翻译。</li>
+<li>2013 年 5 月 27 日更新：根据 2013 年 4 月 10 日更新的官方文档完成了初步翻译。</li>
+</ul>
+<!-- more -->
+<p>本文会在适当的时间里进行增删改等操作，如果您对该文感兴趣，可以仅收藏本页。</p>
+<p>本文链接：<a href="http://dreamcolor.net/20130527/rpi-gpio-module-pwm/" title="使用 RPi.GPIO 模块的脉宽调制功能">使用 RPi.GPIO 模块的脉宽调制功能</a></p>
+<p>创建一个 PWM 实例：</p>
+<pre><code class="language-python">p = GPIO.PWM(channel, frequency)
+</code></pre>
+<p>启用 PWM：</p>
+<pre><code class="language-python">p.start(dc)   # dc 代表占空比（范围：0.0 &amp;amp;lt;= dc &amp;amp;lt;= 100.0）
+</code></pre>
+<p>更改频率：</p>
+<pre><code class="language-python">p.ChangeFrequency(freq)   # freq 为设置的新频率，单位为 Hz
+</code></pre>
+<p>更改占空比：</p>
+<pre><code class="language-python">p.ChangeDutyCycle(dc)  # 范围：0.0 &amp;amp;lt;= dc &amp;amp;lt;= 100.0
+</code></pre>
+<p>停止 PWM：</p>
+<pre><code class="language-python">p.stop()
+</code></pre>
+<p>注意，如果实例中的变量“p”超出范围，也会导致 PWM 停止。</p>
+<p>以下为使 LED 每两秒钟闪烁一次的示例：</p>
+<pre><code class="language-python">import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(12, GPIO.OUT)
+
+p = GPIO.PWM(12, 0.5)
+p.start(1)
+input('点击回车停止：')   # 在 Python 2 中需要使用 raw_input
+p.stop()
+GPIO.cleanup()
+</code></pre>
+<p>以下为使 LED 在亮/暗之间切换的示例：</p>
+<pre><code class="language-python">import time
+import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(12, GPIO.OUT)
+
+p = GPIO.PWM(12, 50)  # 通道为 12 频率为 50Hz
+p.start(0)
+try:
+    while 1:
+        for dc in range(0, 101, 5):
+            p.ChangeDutyCycle(dc)
+            time.sleep(0.1)
+        for dc in range(100, -1, -5):
+            p.ChangeDutyCycle(dc)
+            time.sleep(0.1)
+except KeyboardInterrupt:
+    pass
+p.stop()
+GPIO.cleanup()
+</code></pre>
+<p><strong>相关网站</strong><br>
+原文地址：<a href="https://sourceforge.net/p/raspberry-gpio-python/wiki/PWM/" title="RPi.GPIO module PWM">RPi.GPIO module PWM</a><br>
+项目地址：<a href="https://sourceforge.net/p/raspberry-gpio-python/" title="RPi.GPIO">RPi.GPIO</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[使用 RPi.GPIO 模块的输出（Output）功能]]></title>
+        <id>https://dreamcolor.net/post/rpi-gpio-module-outputs/</id>
+        <link href="https://dreamcolor.net/post/rpi-gpio-module-outputs/">
+        </link>
+        <updated>2013-05-27T14:46:37.000Z</updated>
+        <summary type="html"><![CDATA[<p><strong>更新日志：</strong></p>
+<ul>
+<li>2016 年 12 月 30 日更新：根据 2014 年 11 月 11 日更新的官方文档补充了缺失部分翻译。</li>
+<li>2013 年 5 月 27 日更新：根据 2013 年 3 月 29 日更新的官方文档完成了初步翻译。</li>
+</ul>
+]]></summary>
+        <content type="html"><![CDATA[<p><strong>更新日志：</strong></p>
+<ul>
+<li>2016 年 12 月 30 日更新：根据 2014 年 11 月 11 日更新的官方文档补充了缺失部分翻译。</li>
+<li>2013 年 5 月 27 日更新：根据 2013 年 3 月 29 日更新的官方文档完成了初步翻译。</li>
+</ul>
+<!-- more -->
+<p>本文会在适当的时间里进行增删改等操作，如果您对该文感兴趣，可以仅收藏本页。</p>
+<p>本文链接：<a href="http://dreamcolor.net/20130527/rpi-gpio-module-outputs/" title="使用 RPi.GPIO 模块的输出功能">使用 RPi.GPIO 模块的输出功能</a></p>
+<p>1、 首先对 RPi.GPIO 进行设置（根据<a href="http://dreamcolor.net/20130525/rpi-gpio-module-basics/" title="RPi.GPIO 模块使用基础">这里</a>的描述）</p>
+<pre><code class="language-python">import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(12, GPIO.OUT)
+</code></pre>
+<p>2、 设置某个输出针脚状态为高电平：</p>
+<pre><code class="language-python">GPIO.output(12, GPIO.HIGH)
+ # 或者
+GPIO.output(12, 1)
+ # 或者
+GPIO.output(12, True)
+</code></pre>
+<p>3、 设置某个输出针脚状态为低电平：</p>
+<pre><code class="language-python">GPIO.output(12, GPIO.LOW)
+ # 或者
+GPIO.output(12, 0)
+ # 或者
+GPIO.output(12, False)
+</code></pre>
+<p>4、 同时输出到多个通道：</p>
+<pre><code class="language-python">chan_list = (11,12)
+GPIO.output(chan_list, GPIO.LOW) # all LOW
+GPIO.output(chan_list, (GPIO.HIGH,GPIO.LOW))  # first LOW, second HIGH
+</code></pre>
+<p>5、 程序结束后进行清理</p>
+<pre><code class="language-python">GPIO.cleanup()
+</code></pre>
+<p>注意，您可以读取使用 input() 函数设置的输出通道的当前状态。例如对输出进行切换：</p>
+<pre><code class="language-python">GPIO.output(12, not GPIO.input(12))
+</code></pre>
+<p><strong>相关网站</strong><br>
+原文地址：<a href="https://sourceforge.net/p/raspberry-gpio-python/wiki/Outputs/" title="RPi.GPIO module Outputs">RPi.GPIO module Outputs</a><br>
+项目地址：<a href="https://sourceforge.net/p/raspberry-gpio-python/" title="RPi.GPIO">RPi.GPIO</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[使用 RPi.GPIO 模块的输入（Input）功能]]></title>
+        <id>https://dreamcolor.net/post/rpi-gpio-module-inputs/</id>
+        <link href="https://dreamcolor.net/post/rpi-gpio-module-inputs/">
+        </link>
+        <updated>2013-05-27T10:00:21.000Z</updated>
+        <summary type="html"><![CDATA[<p><strong>更新日志：</strong></p>
+<ul>
+<li>2016 年 12 月 30 日更新：根据 2016 年 2 月 9 日更新的官方文档补充了缺失部分翻译。</li>
+<li>2013 年 5 月 27 日更新：根据 2013 年 4 月 8 日更新的官方文档完成了初步翻译。</li>
+</ul>
+]]></summary>
+        <content type="html"><![CDATA[<p><strong>更新日志：</strong></p>
+<ul>
+<li>2016 年 12 月 30 日更新：根据 2016 年 2 月 9 日更新的官方文档补充了缺失部分翻译。</li>
+<li>2013 年 5 月 27 日更新：根据 2013 年 4 月 8 日更新的官方文档完成了初步翻译。</li>
+</ul>
+<!-- more -->
+<p>本文会在适当的时间里进行增删改等操作，如果您对该文感兴趣，可以仅收藏本页。</p>
+<p>本文链接：<a href="http://dreamcolor.net/20130527/rpi-gpio-module-inputs/" title="使用 RPi.GPIO 模块的输入功能">使用 RPi.GPIO 模块的输入功能</a></p>
+<p>这篇日志的内容应该算是《<a href="http://dreamcolor.net/20130525/rpi-gpio-module-basics/" title="RPi.GPIO 模块使用基础">RPi.GPIO 模块使用基础</a>》Input 部分的扩展讲解，详细讲解了 Input 部分的一些高级应用技巧。</p>
+<p>目前有几种途径可以在您的程序中获得 GPIO 的输入信息。第一种也是最简易的一种为在某个时间点检查输入值。这即是所谓的“轮询（polling）”，而且如果您的程序在错误的时间里进行了读取，可能会错过某个输入值。在循环中运用轮询，有可能使处理器资源紧张。另一种对 GPIO 输入进行响应的方式可以使用“中断（interruots）”（边缘检测（edge detection））。边缘可以是从 HIGH 到 LOW 的过度（下降临界值（falling edge））或从 LOW 到 HIGH 的过度（上升临界值（rising edge））。</p>
+<h2 id="上拉下拉电阻">上拉/下拉电阻</h2>
+<p>如果您在输入针脚上没有连接任何元件，那么它将是“浮动（float）”的。换句话说，因为您没有连接任何元件，在按下按钮或开关之前，读取的值是没有意义的。由于电源的波动，获取到的值可能会有很大的变化。</p>
+<p>为了解决这个问题，我们需要使用上拉/下拉电阻。这样，我们就可设定输入的默认值了。在这里，可以使用硬件或软件对电阻进行上拉/下拉。使用硬件方式，将一个 10K 的电阻连接在输入通道与 3.3V（上拉）或 0V（下拉）之间是常用的做法。而 RPi.GPIO 也允许您通过软件的方式对配置 Broadcom SOC 来达到目的：</p>
+<pre><code class="language-python">GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+</code></pre>
+<p>或者</p>
+<pre><code class="language-python">GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+</code></pre>
+<p>（通道编号是基于您所使用的编号系统所指定的（BOARD 或 BCM）。）</p>
+<h2 id="输入测试轮询polling">输入测试（轮询（polling））</h2>
+<p>您可以在某个时间点获得一次输入的快照：</p>
+<pre><code class="language-python">if GPIO.input(channel):
+    print('Input was HIGH')
+else:
+    print('Input was LOW')
+</code></pre>
+<p>在循环中等待按钮被按下后进行轮询：</p>
+<pre><code class="language-python">while GPIO.input(channel) == GPIO.LOW:
+    time.sleep(0.01)  # 为 CPU 留出 10 毫秒，供其处理其它事物
+</code></pre>
+<p>（这里假设为当按下按钮时，输入状态从 LOW 到 HIGH）</p>
+<h2 id="中断和边检检测">中断和边检检测</h2>
+<p>边缘的定义为电信号从 LOW 到 HIGH（上升临界值）或从 HIGH 到 LOW（下降临界值）状态的改变。正常情况下，对于输入的值来说，我们更关心的是输入的状态是否发生了改变。这种状态上的改变是很重要的。</p>
+<p>为了避免您的程序在忙于处理其它的事物时而错过了您按下按钮的操作，这里有两种方法可以解决：</p>
+<ul>
+<li><strong>wait_for_edge()</strong> 函数</li>
+<li><strong>event_detected()</strong> 函数</li>
+<li>在检测到边缘时执行线程回调函数</li>
+</ul>
+<h3 id="wait_for_edge-函数">wait_for_edge() 函数</h3>
+<p>wait_for_edge() 函数被设计用于在检测到边缘之前阻止程序的运行。换句话说，上面的示例中，等待按钮被按下的语句可以改写为：</p>
+<pre><code class="language-python">GPIO.wait_for_edge(channel, GPIO.RISING)
+</code></pre>
+<p>注意，您可以输入 GPIO.RISING、GPIO.FALLING、GPIO.BOTH 对边缘进行检测。这种方式的优点是占用 CPU 资源很少，因此系统可以有充裕的资源处理其它事物。</p>
+<p>If you only want to wait for a certain length of time, you can use the timeout parameter:</p>
+<pre><code class="language-python"># wait for up to 5 seconds for a rising edge (timeout is in milliseconds)
+channel = GPIO.wait_for_edge(channel, GPIO_RISING, timeout=5000)
+if channel is None:
+    print('Timeout occurred')
+else:
+    print('Edge detected on channel', channel)
+</code></pre>
+<h3 id="event_detected-函数">event_detected() 函数</h3>
+<p>event_detected() 函数被设计用于循环中有其它东西时使用，但不同于轮询的是，它不会错过当 CPU 忙于处理其它事物时输入状态的改变。这在类似使用 Pygame 或 PyQt 时主循环实时监听和响应 GUI 的事件是很有用的。</p>
+<pre><code class="language-python">GPIO.add_event_detect(channel, GPIO.RISING)  # 在通道上添加上升临界值检测
+do_something()
+if GPIO.event_detected(channel):
+    print('Button pressed')
+</code></pre>
+<p>注意，您可以输入 GPIO.RISING、GPIO.FALLING、GPIO.BOTH 对边缘进行检测。</p>
+<h3 id="线程回调">线程回调</h3>
+<p>RPi.GPIO 在第二条线程中执行回调函数。这意味着回调函数可以同您的主程序同时运行，并且可以立即对边缘进行响应。例如：</p>
+<pre><code class="language-python">def my_callback(channel):
+    print('这是一个边缘事件回调函数！')
+    print('在通道 %s 上进行边缘检测'%channel)
+    print('该程序与您的主程序运行在不同的进程中')
+
+GPIO.add_event_detect(channel, GPIO.RISING, callback=my_callback)  # 在通道上添加上升临界值检测
+... 其它程序代码 ...
+</code></pre>
+<p>如果您需要多个回调函数：</p>
+<pre><code class="language-python">def my_callback_one(channel):
+    print('回调 1')
+
+def my_callback_two(channel):
+    print('回调 2')
+
+GPIO.add_event_detect(channel, GPIO.RISING)
+GPIO.add_event_callback(channel, my_callback_one)
+GPIO.add_event_callback(channel, my_callback_two)
+</code></pre>
+<p>注意，在该示例中，回调函数为顺序运行而不是同时运行。这是因为当前只有一个进程供回调使用，而回调的运行顺序是依据它们被定义的顺序。</p>
+<h2 id="开关防抖">开关防抖</h2>
+<p>您可能会注意到，每次按钮按下时，回调操作被调用不止一次。这种现象被称作“开关抖动（switch bounce）”。这里有两种方法解决开关抖动问题：</p>
+<ul>
+<li>将一个 0.1uF 的电容连接到开关上。</li>
+<li>软件防止抖动</li>
+<li>两种方式一起用<br>
+使用软件方式抖动，可以在您指定的回调函数中添加 <strong>bouncetime=</strong> 参数。<br>
+抖动时间需要使用毫秒为单位进行书写。例如：</li>
+</ul>
+<pre><code class="language-python"># 在通道上添加上升临界值检测，忽略由于开关抖动引起的小于 200ms 的边缘操作
+GPIO.add_event_detect(channel, GPIO.RISING, callback=my_callback, bouncetime=200)
+</code></pre>
+<p>或者</p>
+<pre><code class="language-python">GPIO.add_event_callback(channel, my_callback, bouncetime=200)
+</code></pre>
+<h2 id="remove_event_detect">remove_event_detect()</h2>
+<p>由于某种原因，您不希望您的程序检测边缘事件，您可以将它停止：</p>
+<pre><code class="language-python">GPIO.remove_event_detect(channel)
+</code></pre>
+<h2 id="相关网站">相关网站</h2>
+<p>原文地址：<a href="https://sourceforge.net/p/raspberry-gpio-python/wiki/Inputs/" title="RPi.GPIO module Inputs">RPi.GPIO module Inputs</a><br>
+项目地址：<a href="https://sourceforge.net/p/raspberry-gpio-python/" title="RPi.GPIO">RPi.GPIO</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[RPi.GPIO 模块使用基础]]></title>
+        <id>https://dreamcolor.net/post/rpi-gpio-module-basics/</id>
+        <link href="https://dreamcolor.net/post/rpi-gpio-module-basics/">
+        </link>
+        <updated>2013-05-25T07:57:55.000Z</updated>
+        <summary type="html"><![CDATA[<p><strong>更新日志：</strong></p>
+<ul>
+<li>2016 年 12 月 30 日更新：根据 2016 年 1 月 1 日更新的官方文档补充了缺失部分翻译。</li>
+<li>2013 年 5 月 25 日更新：根据 2013 年 3 月 30 日更新的官方文档完成了初步翻译。</li>
+</ul>
+]]></summary>
+        <content type="html"><![CDATA[<p><strong>更新日志：</strong></p>
+<ul>
+<li>2016 年 12 月 30 日更新：根据 2016 年 1 月 1 日更新的官方文档补充了缺失部分翻译。</li>
+<li>2013 年 5 月 25 日更新：根据 2013 年 3 月 30 日更新的官方文档完成了初步翻译。</li>
+</ul>
+<!-- more -->
+<p>本文会在适当的时间里进行增删改等操作，如果您对该文感兴趣，可以仅收藏本页。</p>
+<p>本文链接：<a href="http://dreamcolor.net/20130525/rpi-gpio-module-basics/" title="RPi.GPIO 模块使用基础">RPi.GPIO 模块使用基础</a></p>
+<p>该程序包提供了一个在 Raspberry Pi 中控制 GPIO 的类。</p>
+<p>注意，该模块不适合应用到追求实时性或计数周期的应用中。这是由于您无法预测 Python 何时繁忙，以及资源回收的时间。而且它是运行在基于 Linux 核心的系统中，也不合适用于实时应用 - 原因在于其它进程可能获得更高的 CPU 优先级。如果您一定要追求实时操作的性能，可以考虑购买一块 Arduino 主板 <a href="http://www.arduino.cc" title="Arduino">http://www.arduino.cc</a>!</p>
+<p>本文是 RPi.GPIO 模块文档系列文章的第一篇，除本文外还包括以下几篇：</p>
+<ul>
+<li><a href="http://dreamcolor.net/20130527/rpi-gpio-module-inputs/" title="使用 RPi.GPIO 模块的输入（Input）功能">使用 RPi.GPIO 模块的输入（Input）功能</a></li>
+<li><a href="http://dreamcolor.net/20130527/rpi-gpio-module-outputs/" title="使用 RPi.GPIO 模块的输出（Output）功能">使用 RPi.GPIO 模块的输出（Output）功能</a></li>
+<li><a href="http://dreamcolor.net/20130527/rpi-gpio-module-pwm/" title="使用 RPi.GPIO 模块的脉宽调制（PWM）功能">使用 RPi.GPIO 模块的脉宽调制（PWM）功能</a></li>
+<li><a href="http://dreamcolor.net/20140316/rpi-gpio-module-checking-function-of-gpio-channels/" title="检查 GPIO 通道的用途">检查 GPIO 通道的用途</a></li>
+</ul>
+<h2 id="导入模块">导入模块</h2>
+<p>导入 RPi.GPIO 模块：</p>
+<pre><code class="language-python">import RPi.GPIO as GPIO
+</code></pre>
+<p>通过该操作，您可以将模块名称映射为 GPIO，以便接下来您其它脚本进行使用。</p>
+<p>导入模块并检查它是否导入成功，可以尝试：</p>
+<pre><code class="language-python">import RPi.GPIO as GPIO
+except RuntimeError:
+print(“导入 RPi.GPIO 时出现错误！这可能由于没有超级用户权限造成的。您可以使用 'sudo' 来运行您的脚本。”)
+</code></pre>
+<h2 id="针脚编号">针脚编号</h2>
+<p>目前有两种方式可以通过 RPi.GPIO 对 Raspberry Pi 上的 IO 针脚进行编号。</p>
+<p>第一种方式是使用 BOARD 编号系统。该方式参考 Raspberry Pi 主板上 P1 接线柱的针脚编号。使用该方式的优点是无需考虑主板的修订版本，您硬件始终都是可用的状态。您将无需从新连接线路和更改您的代码。</p>
+<p>第二种方式是使用 BCM 编号。这是一种较低层的工作方式 - 该方式参考 Broadcom SOC 的通道编号。使用过程中，您始终要保证主板上的针脚与图表上标注的通道编号相对应。您的脚本可能在 Raspberry Pi 主板进行修订版本更新时无法工作。</p>
+<p>指定您所使用的方式（必须指定）：</p>
+<pre><code class="language-python">GPIO.setmode(GPIO.BOARD)
+</code></pre>
+<p>或者</p>
+<pre><code class="language-python">GPIO.setmode(GPIO.BCM)
+</code></pre>
+<h2 id="警告">警告</h2>
+<p>可能您的 Raspberry Pi 的 GPIO 上同时有多个脚本/循环。因此，如果 RPi.GPIO 检测到某个针脚被设置为其它用途而非默认的状态（默认为输入），您会在尝试配置某脚本时得到警告消息。</p>
+<p>禁用该警告消息：</p>
+<pre><code class="language-python">GPIO.setwarnings(False)
+</code></pre>
+<h2 id="配置通道">配置通道</h2>
+<p>您需要为每个用于输入或输出的针脚配置通道。</p>
+<p>配置为输入的通道：</p>
+<pre><code class="language-python">GPIO.setup(channel, GPIO.IN)
+</code></pre>
+<p>（通道编号是基于您所使用的编号系统所指定的（BOARD 或 BCM）。）</p>
+<p>更多关于输入通道的进阶信息可以在<a href="http://dreamcolor.net/20130527/rpi-gpio-module-inputs/" title="使用 RPi.GPIO 模块的输入（Input）功能">这里</a>找到。</p>
+<p>配置为输出的通道：</p>
+<pre><code class="language-python">GPIO.setup(channel, GPIO.OUT)
+</code></pre>
+<p>（通道编号是基于您所使用的编号系统所指定的（BOARD 或 BCM）。）</p>
+<p>您还可以指定输出通道的初始值：</p>
+<pre><code class="language-python">GPIO.setup(channel, GPIO.OUT, initial=GPIO.HIGH)
+</code></pre>
+<h2 id="配置多个通道">配置多个通道</h2>
+<p>您可以同时配置多个通道。<br>
+例如：</p>
+<pre><code class="language-python">chan_list = [11,12]    # 根据您的需要添加任意数量的通道！
+                       # 您可以使用元组的方式进行添加，例如：
+                       # chan_list = (11,12)
+GPIO.setup(chan_list, GPIO.OUT)
+</code></pre>
+<h2 id="输入">输入</h2>
+<p>读取 GPIO 针脚的值：</p>
+<pre><code class="language-python">GPIO.input(channel)
+</code></pre>
+<p>（通道编号是基于您所使用的编号系统所指定的（BOARD 或 BCM）。）这将返回 0 / GPIO.LOW / False 或者 1 / GPIO.HIGH / True。</p>
+<h2 id="输出">输出</h2>
+<p>设置 GPIO 针脚的输出状态：</p>
+<pre><code class="language-python">GPIO.output(channel, state)
+</code></pre>
+<p>（通道编号是基于您所使用的编号系统所指定的（BOARD 或 BCM）。）</p>
+<p>状态可以为 0 / GPIO.LOW / False 或者 1 / GPIO.HIGH / True。</p>
+<h2 id="输出到多个通道">输出到多个通道</h2>
+<p>您可以同时输出到多个通道。<br>
+例如：</p>
+<pre><code class="language-python">chan_list = [11,12]                             # 可以使用元组
+GPIO.output(chan_list, GPIO.LOW)                # 设置所有通道为 GPIO.LOW
+GPIO.output(chan_list, (GPIO.HIGH, GPIO.LOW))   # 设置第一个为 HIGH 第二个为 LOW
+</code></pre>
+<h2 id="清理">清理</h2>
+<p>在任何程序结束后，请养成清理用过的资源的好习惯。使用 RPi.GPIO 也同样需要这样。恢复所有使用过的通道状态为输入，您可以避免由于短路意外损坏您的 Raspberry Pi 针脚。注意，该操作仅会清理您的脚本使用过的 GPIO 通道。</p>
+<p>在您的脚本结束后进行清理：</p>
+<pre><code class="language-python">GPIO.cleanup()
+</code></pre>
+<p>某些场合，程序退出时，您可能不想清理所有通道。您可以对指定通道进行清理。可以使用列表或元组方式：</p>
+<pre><code class="language-python">GPIO.cleanup(channel)
+GPIO.cleanup( (channel1, channel2) )
+GPIO.cleanup( [channel1, channel2] )
+</code></pre>
+<h2 id="raspberry-pi-修订版本和-rpigpio-版本">Raspberry Pi 修订版本和 RPi.GPIO 版本</h2>
+<p>检查您的树莓派的信息：</p>
+<pre><code class="language-python">GPIO.RPI_INFO
+</code></pre>
+<p>检测 Raspberry Pi 主板的修订版本：</p>
+<pre><code class="language-python">GPIO.RPI_INFO['P1_REVISION']
+GPIO.RPI_REVISION
+</code></pre>
+<p>检测 RPi.GPIO 的版本：</p>
+<pre><code class="language-python">GPIO.VERSION
+</code></pre>
+<h2 id="相关网站">相关网站</h2>
+<p>原文地址：<a href="https://sourceforge.net/p/raspberry-gpio-python/wiki/BasicUsage/" title="RPi.GPIO module basics">RPi.GPIO module basics</a><br>
+项目地址：<a href="https://sourceforge.net/p/raspberry-gpio-python/" title="RPi.GPIO">RPi.GPIO</a></p>
 ]]></content>
     </entry>
 </feed>

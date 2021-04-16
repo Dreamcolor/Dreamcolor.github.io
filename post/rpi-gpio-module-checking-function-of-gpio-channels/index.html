@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>检查 GPIO 通道的用途 | Dreamcolor&#39;s Cote</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://dreamcolor.net/favicon.ico?v=1618554432011">
+<link rel="stylesheet" href="https://dreamcolor.net/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="更新日志：
+
+2016 年 12 月 31 日更新：根据 2015 年 2 月 18 日更新的官方文档补充了缺失部分翻译。
+2014 年 3 月 16 日更新：根据 2014 年 4 月 24 日更新的官方文档完成了初步翻译。
+
+
+本文会在..." />
+    <meta name="keywords" content="Channel,Function,GPIO,Python,Raspberry Pi,RPi.GPIO" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://dreamcolor.net">
+        <img src="https://dreamcolor.net/images/avatar.png?v=1618554432011" class="site-logo">
+        <h1 class="site-title">Dreamcolor&#39;s Cote</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            Home
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            Archives
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            Tags
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            About
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/Dreamcolor" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://twitter.com/Dreamcolor" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="http://weibo.cn/dreamcolor" target="_blank">
+            <i class="fab fa-weibo"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      谗夫毁士，如寸云蔽日，不久自明；<br/>媚子阿人，似隙风侵肌，不觉其损！
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://dreamcolor.net" target="_blank">Dreamcolor's Cote</a> | <a class="rss" href="https://dreamcolor.net/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">检查 GPIO 通道的用途</h2>
+            <div class="post-date">2014-03-16</div>
+            
+            <div class="post-content" v-pre>
+              <p><strong>更新日志：</strong></p>
+<ul>
+<li>2016 年 12 月 31 日更新：根据 2015 年 2 月 18 日更新的官方文档补充了缺失部分翻译。</li>
+<li>2014 年 3 月 16 日更新：根据 2014 年 4 月 24 日更新的官方文档完成了初步翻译。</li>
+</ul>
+<!-- more -->
+<p>本文会在适当的时间里进行增删改等操作，如果您对该文感兴趣，可以仅收藏本页。</p>
+<p>本文链接：<a href="http://dreamcolor.net/20140316/rpi-gpio-module-checking-function-of-gpio-channels/" title="检查 GPIO 通道的用途">检查 GPIO 通道的用途</a></p>
+<h2 id="gpio_functionchannel">gpio_function(channel)</h2>
+<p>用于显示 GPIO 通道的用途。<br>
+例如：</p>
+<pre><code class="language-python">import RPi.GPIO as GPIO
+
+GPIO.setmode(GPIO.BOARD)
+func = GPIO.gpio_function(pin)
+</code></pre>
+<p>将返回如下通道状态信息：<br>
+<strong>GPIO.INPUT、GPIO.OUTPUT、GPIO.SPI、GPIO.I2C、GPIO.PWM、GPIO.SERIAL、GPIO.UNKNOWN</strong></p>
+<h2 id="相关网站">相关网站</h2>
+<p>原文地址：<a href="https://sourceforge.net/p/raspberry-gpio-python/wiki/Checking%20function%20of%20GPIO%20channels/" title="RPi.GPIO module Checking function of GPIO channels">RPi.GPIO module Checking function of GPIO channels</a><br>
+项目地址：<a href="https://sourceforge.net/p/raspberry-gpio-python/" title="RPi.GPIO">RPi.GPIO</a></p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://dreamcolor.net/tag/channel/" class="tag">
+                    Channel
+                  </a>
+                
+                  <a href="https://dreamcolor.net/tag/function/" class="tag">
+                    Function
+                  </a>
+                
+                  <a href="https://dreamcolor.net/tag/gpio/" class="tag">
+                    GPIO
+                  </a>
+                
+                  <a href="https://dreamcolor.net/tag/python/" class="tag">
+                    Python
+                  </a>
+                
+                  <a href="https://dreamcolor.net/tag/raspberry-pi/" class="tag">
+                    Raspberry Pi
+                  </a>
+                
+                  <a href="https://dreamcolor.net/tag/rpigpio/" class="tag">
+                    RPi.GPIO
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://dreamcolor.net/post/rpio-document-pwm-py/">
+                  <h3 class="post-title">
+                    RPIO 文档翻译 - RPIO.PWM（利用 DMA 为 Raspberry Pi 实现 PWM）
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+
+  </body>
+</html>

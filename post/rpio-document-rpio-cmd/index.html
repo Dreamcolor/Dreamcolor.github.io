@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>RPIO 文档翻译 - rpio（命令行工具） | Dreamcolor&#39;s Cote</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://dreamcolor.net/favicon.ico?v=1618554432011">
+<link rel="stylesheet" href="https://dreamcolor.net/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="更新日志：
+2013 年 5 月 31 日更新：根据官方文档完成了初步翻译。
+本文会在适当的时间里进行增删改等操作，如果您对该文感兴趣，可以仅收藏本页。
+本文链接：RPIO 文档翻译 - rpio（命令行工具）
+
+rpio 包括两个命令行工..." />
+    <meta name="keywords" content="GPIO,Python,Raspberry Pi,RPIO,CMD" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://dreamcolor.net">
+        <img src="https://dreamcolor.net/images/avatar.png?v=1618554432011" class="site-logo">
+        <h1 class="site-title">Dreamcolor&#39;s Cote</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            Home
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            Archives
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            Tags
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            About
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/Dreamcolor" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://twitter.com/Dreamcolor" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="http://weibo.cn/dreamcolor" target="_blank">
+            <i class="fab fa-weibo"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      谗夫毁士，如寸云蔽日，不久自明；<br/>媚子阿人，似隙风侵肌，不觉其损！
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://dreamcolor.net" target="_blank">Dreamcolor's Cote</a> | <a class="rss" href="https://dreamcolor.net/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">RPIO 文档翻译 - rpio（命令行工具）</h2>
+            <div class="post-date">2013-05-31</div>
+            
+            <div class="post-content" v-pre>
+              <p><strong>更新日志：</strong><br>
+2013 年 5 月 31 日更新：根据官方文档完成了初步翻译。<br>
+本文会在适当的时间里进行增删改等操作，如果您对该文感兴趣，可以仅收藏本页。<br>
+本文链接：<a href="http://dreamcolor.net/20130531/rpio-document-rpio-cmd/" title="RPIO 文档翻译 - rpio（命令行工具）">RPIO 文档翻译 - rpio（命令行工具）</a></p>
+<!-- more -->
+<p><code>rpio</code> 包括两个命令行工具，其允许您对系统中所有 GPIO 进行监控和操作（包括其它进程使用到的端口）。默认情况使用的是 BCM GPIO 编号方式。</p>
+<ul>
+<li><code>rpio</code> - 监控和操作 GPIO 的命令行工具</li>
+<li><code>rpio-curses</code> - 终端窗口中拥有图形用户界面的 <code>rpio</code></li>
+</ul>
+<h2 id="rpio-curses">rpio-curses</h2>
+<p><code>rpio-curses</code> 是一个在终端窗口中对 GPIO 进行监控和控制的图形用户界面。从版本 0.8.4 开始，其已成为 RPIO 的一部分。使用 <code>rpio-curses</code> 您可以查看主板上所有 GPIO 的功能和状态，并可进行参数的修改。列表将每秒钟更新一次，以用来监控您是否做了某些修改。您可以在命令行中输入以下命令启动 <code>rpio-curses</code>：</p>
+<pre><code class="language-bash">$ rpio-curses
+</code></pre>
+<p>以下为几张 <code>rpio-curses</code> 运行时的屏幕截图：</p>
+<figure data-type="image" tabindex="1"><img src="https://dreamcolor.net/post-images/1616902595426.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://dreamcolor.net/post-images/1616902600896.png" alt="" loading="lazy"></figure>
+<h2 id="rpio">rpio</h2>
+<p><code>rpio --inspect-all</code>（或者 <code>-I</code>）可能是最常用的命令了，其将显示主板上所有 GPIO 的功能和状态。以下为 <code>rpio</code> 功能的概述：</p>
+<p>显示帮助页面：</p>
+<pre><code class="language-bash">$ rpio -h
+</code></pre>
+<p>监控 GPIO 的功能和状态（使用 <code>-i</code> 或 <code>--inspect</code>）：</p>
+<pre><code class="language-bash">$ rpio -i 7
+$ rpio -i 7,8,9
+$ rpio -i 1-9
+
+# 输出 `rpio -i 1-9` 的示例（不可用的端口将被忽略）：
+GPIO 2: ALT0   (1)
+GPIO 3: ALT0   (1)
+GPIO 4: INPUT  (0)
+GPIO 7: OUTPUT (0)
+GPIO 8: INPUT  (1)
+GPIO 9: INPUT  (0)
+</code></pre>
+<p>监控主板上所有 GPIO（使用 <code>-I</code> 或 <code>--inspect-all</code>）：</p>
+<pre><code class="language-bash">$ rpio -I
+</code></pre>
+<p>设置 GPIO 7 输出到 1 （或者 0）（使用 <code>-s</code> 或 <code>--set</code>）：</p>
+<pre><code class="language-bash">$ rpio -s 7:1
+</code></pre>
+<p>您只能写入到已被设置为 OUTPUT 的针脚中。您可以使用 <code>--setoutput &lt;gpio-id&gt;</code> 自行设置。</p>
+<p>等待 GPIO 上的中断事件（使用 <code>-w</code> 或 <code>--wait_for_interrupts</code>）。您可以使用参数：<code>:pullup</code>，<code>:pulldown</code> 或 <code>pulloff</code> 指定一个临界点（例如：<code>:rising</code>；默认为<code>both</code>）</p>
+<pre><code class="language-bash">$ rpio -w 7
+$ rpio -w 7:rising
+$ rpio -w 7:falling:pullup
+$ rpio -w 7:rising:pullup,17,18
+$ rpio -w 1-9
+</code></pre>
+<p>设置某针脚为 INPUT（在使用软件电阻时为可选项）：</p>
+<pre><code class="language-bash">$ rpio --setinput 7
+$ rpio --setinput 7:pullup
+$ rpio --setinput 7:pulldown
+</code></pre>
+<p>设置某针脚为 OUTPUT（在初始值（0 或 1）时为可选项）：</p>
+<pre><code class="language-bash">$ rpio --setoutput 8
+$ rpio --setoutput 8:1
+</code></pre>
+<p>显示 Raspberry Pi 的系统信息：</p>
+<pre><code class="language-bash">$ rpio --sysinfo
+
+# 输出示例：
+000e: Model B, Revision 2.0, RAM: 256 MB, Maker: Sony
+</code></pre>
+<p>您可以将 <code>RPIO</code> 软件包更新到最新版本（功能与 <code>easy_install -U RPIO</code> 相同）：</p>
+<pre><code class="language-bash">$ rpio --update-rpio
+</code></pre>
+<p>安装（更新） <code>rpio</code> 帮助页面：</p>
+<pre><code class="language-bash">$ rpio --update-man
+$ man rpio
+</code></pre>
+<p>原文地址：<a href="http://pythonhosted.org/RPIO/rpio_cmd.html" title="rpio, the command line tools">rpio, the command line tools</a><br>
+项目地址：<a href="http://pythonhosted.org/RPIO/" title="RPIO’s documentation!">RPIO’s documentation!</a></p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://dreamcolor.net/tag/gpio/" class="tag">
+                    GPIO
+                  </a>
+                
+                  <a href="https://dreamcolor.net/tag/python/" class="tag">
+                    Python
+                  </a>
+                
+                  <a href="https://dreamcolor.net/tag/raspberry-pi/" class="tag">
+                    Raspberry Pi
+                  </a>
+                
+                  <a href="https://dreamcolor.net/tag/rpio/" class="tag">
+                    RPIO
+                  </a>
+                
+                  <a href="https://dreamcolor.net/tag/cmd/" class="tag">
+                    CMD
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://dreamcolor.net/post/rpi-gpio-module-pwm/">
+                  <h3 class="post-title">
+                    使用 RPi.GPIO 模块的脉宽调制（PWM）功能
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+
+  </body>
+</html>

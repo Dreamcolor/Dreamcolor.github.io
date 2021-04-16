@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>使用 RPi.GPIO 模块的输入（Input）功能 | Dreamcolor&#39;s Cote</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://dreamcolor.net/favicon.ico?v=1618554432011">
+<link rel="stylesheet" href="https://dreamcolor.net/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="更新日志：
+
+2016 年 12 月 30 日更新：根据 2016 年 2 月 9 日更新的官方文档补充了缺失部分翻译。
+2013 年 5 月 27 日更新：根据 2013 年 4 月 8 日更新的官方文档完成了初步翻译。
+
+
+本文会在适当..." />
+    <meta name="keywords" content="GPIO,Python,Raspberry Pi,RPi.GPIO,Input" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://dreamcolor.net">
+        <img src="https://dreamcolor.net/images/avatar.png?v=1618554432011" class="site-logo">
+        <h1 class="site-title">Dreamcolor&#39;s Cote</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            Home
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            Archives
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            Tags
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            About
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/Dreamcolor" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://twitter.com/Dreamcolor" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="http://weibo.cn/dreamcolor" target="_blank">
+            <i class="fab fa-weibo"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      谗夫毁士，如寸云蔽日，不久自明；<br/>媚子阿人，似隙风侵肌，不觉其损！
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://dreamcolor.net" target="_blank">Dreamcolor's Cote</a> | <a class="rss" href="https://dreamcolor.net/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">使用 RPi.GPIO 模块的输入（Input）功能</h2>
+            <div class="post-date">2013-05-27</div>
+            
+            <div class="post-content" v-pre>
+              <p><strong>更新日志：</strong></p>
+<ul>
+<li>2016 年 12 月 30 日更新：根据 2016 年 2 月 9 日更新的官方文档补充了缺失部分翻译。</li>
+<li>2013 年 5 月 27 日更新：根据 2013 年 4 月 8 日更新的官方文档完成了初步翻译。</li>
+</ul>
+<!-- more -->
+<p>本文会在适当的时间里进行增删改等操作，如果您对该文感兴趣，可以仅收藏本页。</p>
+<p>本文链接：<a href="http://dreamcolor.net/20130527/rpi-gpio-module-inputs/" title="使用 RPi.GPIO 模块的输入功能">使用 RPi.GPIO 模块的输入功能</a></p>
+<p>这篇日志的内容应该算是《<a href="http://dreamcolor.net/20130525/rpi-gpio-module-basics/" title="RPi.GPIO 模块使用基础">RPi.GPIO 模块使用基础</a>》Input 部分的扩展讲解，详细讲解了 Input 部分的一些高级应用技巧。</p>
+<p>目前有几种途径可以在您的程序中获得 GPIO 的输入信息。第一种也是最简易的一种为在某个时间点检查输入值。这即是所谓的“轮询（polling）”，而且如果您的程序在错误的时间里进行了读取，可能会错过某个输入值。在循环中运用轮询，有可能使处理器资源紧张。另一种对 GPIO 输入进行响应的方式可以使用“中断（interruots）”（边缘检测（edge detection））。边缘可以是从 HIGH 到 LOW 的过度（下降临界值（falling edge））或从 LOW 到 HIGH 的过度（上升临界值（rising edge））。</p>
+<h2 id="上拉下拉电阻">上拉/下拉电阻</h2>
+<p>如果您在输入针脚上没有连接任何元件，那么它将是“浮动（float）”的。换句话说，因为您没有连接任何元件，在按下按钮或开关之前，读取的值是没有意义的。由于电源的波动，获取到的值可能会有很大的变化。</p>
+<p>为了解决这个问题，我们需要使用上拉/下拉电阻。这样，我们就可设定输入的默认值了。在这里，可以使用硬件或软件对电阻进行上拉/下拉。使用硬件方式，将一个 10K 的电阻连接在输入通道与 3.3V（上拉）或 0V（下拉）之间是常用的做法。而 RPi.GPIO 也允许您通过软件的方式对配置 Broadcom SOC 来达到目的：</p>
+<pre><code class="language-python">GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+</code></pre>
+<p>或者</p>
+<pre><code class="language-python">GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+</code></pre>
+<p>（通道编号是基于您所使用的编号系统所指定的（BOARD 或 BCM）。）</p>
+<h2 id="输入测试轮询polling">输入测试（轮询（polling））</h2>
+<p>您可以在某个时间点获得一次输入的快照：</p>
+<pre><code class="language-python">if GPIO.input(channel):
+    print('Input was HIGH')
+else:
+    print('Input was LOW')
+</code></pre>
+<p>在循环中等待按钮被按下后进行轮询：</p>
+<pre><code class="language-python">while GPIO.input(channel) == GPIO.LOW:
+    time.sleep(0.01)  # 为 CPU 留出 10 毫秒，供其处理其它事物
+</code></pre>
+<p>（这里假设为当按下按钮时，输入状态从 LOW 到 HIGH）</p>
+<h2 id="中断和边检检测">中断和边检检测</h2>
+<p>边缘的定义为电信号从 LOW 到 HIGH（上升临界值）或从 HIGH 到 LOW（下降临界值）状态的改变。正常情况下，对于输入的值来说，我们更关心的是输入的状态是否发生了改变。这种状态上的改变是很重要的。</p>
+<p>为了避免您的程序在忙于处理其它的事物时而错过了您按下按钮的操作，这里有两种方法可以解决：</p>
+<ul>
+<li><strong>wait_for_edge()</strong> 函数</li>
+<li><strong>event_detected()</strong> 函数</li>
+<li>在检测到边缘时执行线程回调函数</li>
+</ul>
+<h3 id="wait_for_edge-函数">wait_for_edge() 函数</h3>
+<p>wait_for_edge() 函数被设计用于在检测到边缘之前阻止程序的运行。换句话说，上面的示例中，等待按钮被按下的语句可以改写为：</p>
+<pre><code class="language-python">GPIO.wait_for_edge(channel, GPIO.RISING)
+</code></pre>
+<p>注意，您可以输入 GPIO.RISING、GPIO.FALLING、GPIO.BOTH 对边缘进行检测。这种方式的优点是占用 CPU 资源很少，因此系统可以有充裕的资源处理其它事物。</p>
+<p>If you only want to wait for a certain length of time, you can use the timeout parameter:</p>
+<pre><code class="language-python"># wait for up to 5 seconds for a rising edge (timeout is in milliseconds)
+channel = GPIO.wait_for_edge(channel, GPIO_RISING, timeout=5000)
+if channel is None:
+    print('Timeout occurred')
+else:
+    print('Edge detected on channel', channel)
+</code></pre>
+<h3 id="event_detected-函数">event_detected() 函数</h3>
+<p>event_detected() 函数被设计用于循环中有其它东西时使用，但不同于轮询的是，它不会错过当 CPU 忙于处理其它事物时输入状态的改变。这在类似使用 Pygame 或 PyQt 时主循环实时监听和响应 GUI 的事件是很有用的。</p>
+<pre><code class="language-python">GPIO.add_event_detect(channel, GPIO.RISING)  # 在通道上添加上升临界值检测
+do_something()
+if GPIO.event_detected(channel):
+    print('Button pressed')
+</code></pre>
+<p>注意，您可以输入 GPIO.RISING、GPIO.FALLING、GPIO.BOTH 对边缘进行检测。</p>
+<h3 id="线程回调">线程回调</h3>
+<p>RPi.GPIO 在第二条线程中执行回调函数。这意味着回调函数可以同您的主程序同时运行，并且可以立即对边缘进行响应。例如：</p>
+<pre><code class="language-python">def my_callback(channel):
+    print('这是一个边缘事件回调函数！')
+    print('在通道 %s 上进行边缘检测'%channel)
+    print('该程序与您的主程序运行在不同的进程中')
+
+GPIO.add_event_detect(channel, GPIO.RISING, callback=my_callback)  # 在通道上添加上升临界值检测
+... 其它程序代码 ...
+</code></pre>
+<p>如果您需要多个回调函数：</p>
+<pre><code class="language-python">def my_callback_one(channel):
+    print('回调 1')
+
+def my_callback_two(channel):
+    print('回调 2')
+
+GPIO.add_event_detect(channel, GPIO.RISING)
+GPIO.add_event_callback(channel, my_callback_one)
+GPIO.add_event_callback(channel, my_callback_two)
+</code></pre>
+<p>注意，在该示例中，回调函数为顺序运行而不是同时运行。这是因为当前只有一个进程供回调使用，而回调的运行顺序是依据它们被定义的顺序。</p>
+<h2 id="开关防抖">开关防抖</h2>
+<p>您可能会注意到，每次按钮按下时，回调操作被调用不止一次。这种现象被称作“开关抖动（switch bounce）”。这里有两种方法解决开关抖动问题：</p>
+<ul>
+<li>将一个 0.1uF 的电容连接到开关上。</li>
+<li>软件防止抖动</li>
+<li>两种方式一起用<br>
+使用软件方式抖动，可以在您指定的回调函数中添加 <strong>bouncetime=</strong> 参数。<br>
+抖动时间需要使用毫秒为单位进行书写。例如：</li>
+</ul>
+<pre><code class="language-python"># 在通道上添加上升临界值检测，忽略由于开关抖动引起的小于 200ms 的边缘操作
+GPIO.add_event_detect(channel, GPIO.RISING, callback=my_callback, bouncetime=200)
+</code></pre>
+<p>或者</p>
+<pre><code class="language-python">GPIO.add_event_callback(channel, my_callback, bouncetime=200)
+</code></pre>
+<h2 id="remove_event_detect">remove_event_detect()</h2>
+<p>由于某种原因，您不希望您的程序检测边缘事件，您可以将它停止：</p>
+<pre><code class="language-python">GPIO.remove_event_detect(channel)
+</code></pre>
+<h2 id="相关网站">相关网站</h2>
+<p>原文地址：<a href="https://sourceforge.net/p/raspberry-gpio-python/wiki/Inputs/" title="RPi.GPIO module Inputs">RPi.GPIO module Inputs</a><br>
+项目地址：<a href="https://sourceforge.net/p/raspberry-gpio-python/" title="RPi.GPIO">RPi.GPIO</a></p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://dreamcolor.net/tag/gpio/" class="tag">
+                    GPIO
+                  </a>
+                
+                  <a href="https://dreamcolor.net/tag/python/" class="tag">
+                    Python
+                  </a>
+                
+                  <a href="https://dreamcolor.net/tag/raspberry-pi/" class="tag">
+                    Raspberry Pi
+                  </a>
+                
+                  <a href="https://dreamcolor.net/tag/rpigpio/" class="tag">
+                    RPi.GPIO
+                  </a>
+                
+                  <a href="https://dreamcolor.net/tag/input/" class="tag">
+                    Input
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://dreamcolor.net/post/rpi-gpio-module-basics/">
+                  <h3 class="post-title">
+                    RPi.GPIO 模块使用基础
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+
+  </body>
+</html>

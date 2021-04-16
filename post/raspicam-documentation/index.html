@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Raspberry Pi 摄像头模块应用程序文档翻译 | Dreamcolor&#39;s Cote</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://dreamcolor.net/favicon.ico?v=1618554432011">
+<link rel="stylesheet" href="https://dreamcolor.net/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="本文会在适当的时间里进行增删改等操作，如果您对该文感兴趣，可以仅收藏本页。
+
+RaspiCam 文档
+本文档将对 2013 年 10 月 11 日为止可用的三个 Raspberry Pi 摄像头应用程序进行介绍。
+目前提供了三个应用程序，分..." />
+    <meta name="keywords" content="Raspberry Pi,Camera,Featured,RaspiCam" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://dreamcolor.net">
+        <img src="https://dreamcolor.net/images/avatar.png?v=1618554432011" class="site-logo">
+        <h1 class="site-title">Dreamcolor&#39;s Cote</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            Home
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            Archives
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            Tags
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            About
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/Dreamcolor" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://twitter.com/Dreamcolor" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="http://weibo.cn/dreamcolor" target="_blank">
+            <i class="fab fa-weibo"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      谗夫毁士，如寸云蔽日，不久自明；<br/>媚子阿人，似隙风侵肌，不觉其损！
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://dreamcolor.net" target="_blank">Dreamcolor's Cote</a> | <a class="rss" href="https://dreamcolor.net/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Raspberry Pi 摄像头模块应用程序文档翻译</h2>
+            <div class="post-date">2013-05-24</div>
+            
+              <div class="feature-container" style="background-image: url('https://dreamcolor.net/post-images/raspicam-documentation.jpg')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <p>本文会在适当的时间里进行增删改等操作，如果您对该文感兴趣，可以仅收藏本页。</p>
+<!-- more -->
+<h2 id="raspicam-文档">RaspiCam 文档</h2>
+<p>本文档将对 2013 年 10 月 11 日为止可用的三个 Raspberry Pi 摄像头应用程序进行介绍。</p>
+<p>目前提供了三个应用程序，分别为：<code>raspistill</code>、<code>raspivid</code>、<code>raspistillyuv</code>。其中 <code>raspistill</code> 和 <code>raspistillyuv</code> 非常相似，并且都是用于捕捉图像，而 <code>raspivid</code> 用于捕捉视频。</p>
+<p>所有应用程序均基于命令行方式运行，通过 OpenMAX 的 mmal API 进行编写。OpenMAX 的 mmal API 提供了更易使用的系统组件。注意，mmal 是一个由 Broadcom 为 Videocore 4 系统定制的 API。</p>
+<p>应用程序使用了四个 OpenMAX（mmal）组件：<strong>camera</strong>（摄像）、<strong>preview</strong>（预览）、<strong>encoder</strong>（编码）、<strong>null_sink</strong>。所有应用程序均使用了摄像组件，<code>raspistill</code> 使用了图像编码组件，<code>raspivid</code> 使用了视频编码组件，<code>raspistillyuv</code> 没有使用编码组件，而是直接将 YUV 或 RGB 从摄像组件输出到文件。</p>
+<p>预览显示为可选参数，但是可以用于全屏或输出到指定的显示器显示区域进行显示。如果预览被禁用，那么 null_silk 组件将会对预览帧进行“吸收”。这是由于尽管不需要摄像头生成供显示所用的的预览帧，但是仍需要使用它们进行曝光计算和白平衡设置的缘故。</p>
+<p>此外，还可以省略文件名参数，这样既可以直接预览显示而不写入文件，或者直接输出到标准输出设备上。</p>
+<p>命令行帮助可以通过直接输入应用程序名称获得。</p>
+<h3 id="安装摄像头硬件">安装摄像头硬件</h3>
+<p>警告：摄像头对静电非常敏感。如果您在安装摄像头电路板时没有防静电手环，可以尝试触摸一下水龙头、金属水槽或其它类似的东西即可。</p>
+<p>摄像头电路板与 Raspberry Pi 通过一条 15 芯的排线进行连接。仅有两个连接座需要连接，排线需要安装到摄像头电路板和 Raspberry Pi 上。您需要正确安装，否则摄像头无法工作。对于摄像头电路板，排线末端的蓝色标记应该背对着电路板。而 Raspberry Pi 部分，蓝色标记应该正对着网络接口方向（如果您使用的是 Model A，那么也是需要正对着网络接口预留位）。</p>
+<p>尽管两部分连接座不尽相同，但它们的工作方式很相似。对于 Raspberry Pi，拉起连接座两端的卡扣。它应该很容易拉起，并能够轻微活动。把排线完全插入到连接座中，并保证竖直，然后轻轻按下两端的卡扣。摄像头电路板方面，也需要您将卡扣向电路板相反方向拉开，然后轻轻插入排线，最后将卡扣推回。摄像头电路板的连接座与 Pi 上的区别就在这里。</p>
+<h3 id="安装摄像头软件">安装摄像头软件</h3>
+<p>执行下文介绍的命令行进行下载并安装最新的内核，GPU 固件及应用程序。您需要连接到互联网才可以实现以下操作。</p>
+<pre><code class="language-bash">sudo apt-get update
+sudo apt-get upgrade
+</code></pre>
+<p>接下来，您首先需要在 Raspberry Pi 的 raspi-config 程序中启用摄像头的支持。</p>
+<pre><code class="language-bash">sudo raspi-config
+</code></pre>
+<p>将光标移动到摄像头选项（Camera option）处，并选择启用（Enable）。在退出 raspi-config 时会要求您重新启动。启用选项是为了确保重启后 GPU 固件能够正确运行（包括摄像头驱动和调节电路），并且 GPU 从主内存划分到了足够的内存使摄像头能够正确运行。</p>
+<p>测试系统已经完成安装并正常工作，可尝试以下命令：</p>
+<pre><code class="language-bash">raspistill -v -o test.jpg
+</code></pre>
+<p>这将显示来自摄像头 5 秒钟的预览图像，并且拍摄一张照片，然后保存为文件 test.jpg，同时显示出需要相关信息。</p>
+<h3 id="故障排除">故障排除</h3>
+<p>如果摄像头工作不正常，您可以尝试以下操作。</p>
+<ul>
+<li>连接排线是否连接正确？它们必须都垂直插入到插槽中。</li>
+<li>摄像头模块的连接座是否紧密的贴合到了电路板上？摄像头模块电路板上连接座的黑色卡扣，有时会发生松动。用指甲轻轻拉开，并且重新将排线插入，并且把卡扣按回。</li>
+<li>是否运行过 sudo apt-get update 和 sudo apt-get upgrade 了？</li>
+<li>是否运行过 raspi-config 并启用了摄像头选项？</li>
+<li>您的电源合适吗？除 Raspberry Pi 所要求的电量，摄像头将需要额外的 200-250mA 的电量。</li>
+</ul>
+<p>如果仍然无法工作，可以尝试以下操作：</p>
+<p><strong>Error : raspistill/raspivid not found.</strong> 该提示可以意味着您 update/upgrade 操作失败了。请重试。</p>
+<p><strong>Error : ENOMEM displayed.</strong> 摄像头没有启动。请再次检查所有的连接线。</p>
+<p><strong>Error : ENOSPC displayed.</strong> 摄像头可能使 GPU 内存溢出了。检查 /boot/ 目录下的 config.txt 文件内容。gpu_men 选项，最少应该为 128。</p>
+<p>如果以上内容都尝试过了，摄像头仍然无法工作，那么它可能出现问题了。可以尝试在 Raspberry Pi 论坛的 Camera 板块找找是否有更多可用的帮助。</p>
+<h3 id="通用命令行参数">通用命令行参数</h3>
+<h4 id="预览窗口">预览窗口</h4>
+<p><code>--preview, -p</code> 预览窗口设置 &lt;'x,y,w,h'&gt;<br>
+允许用户在屏幕上定义预览窗口的大小和位置。注意，这将在所有其它窗口/图像的上层显示。</p>
+<p><code>--fullscreen, -f</code> 全屏预览模式<br>
+强制预览屏幕全屏显示。注意，这将会保留输入图像的长宽比例，所以可能会在图像的边缘出现填充条。</p>
+<p><code>--nopreview, -n</code> 不显示预览窗口<br>
+完全禁用预览窗口。注意，尽管预览窗口被禁用，但摄像头仍然在进行处理，所以会继续消耗资源。</p>
+<p><code>--opacity, -op</code> 设置预览窗口透明度<br>
+设置预览窗口的透明度。0 为完全透明，255 为完全不透明。</p>
+<h4 id="摄像头控制参数">摄像头控制参数</h4>
+<p><code>--sharpness, -sh</code> 设置图像锐度（-100 - 100）<br>
+设置图像的锐度，默认为 0。</p>
+<p><code>--contrast, -co</code> 设置图像对比度（-100 - 100）<br>
+设置图像的对比度，默认为 0。</p>
+<p><code>--brightness, -br</code> 设置图像亮度（0 - 100）<br>
+设置图像的亮度，默认为 50。0 为最暗，100 为最亮。</p>
+<p><code>--saturation, -sa</code> 设置图像饱和度（-100 - 100）<br>
+设置图像色彩饱和度。默认为 0。</p>
+<p><code>--ISO, -ISO</code> 设置捕捉 ISO<br>
+为捕捉图像设置 ISO。范围为 100 到 800。</p>
+<p><code>--vstab, -vs</code> 打开视频稳定<br>
+仅用于视频模式，用于开启视频稳定。</p>
+<p><code>--ev, -ev</code> 设置曝光补偿<br>
+设置图像的曝光补偿。范围为 -10 到 10，默认为 0。</p>
+<p><code>--exposure, -ex</code> 设置曝光模式<br>
+可能用到的参数为：</p>
+<ul>
+<li><strong>auto</strong> - 使用自动曝光模式</li>
+<li><strong>night</strong> - 夜间拍摄模式</li>
+<li><strong>nightpreview</strong> -夜间预览拍摄模式（暂且这么称呼）</li>
+<li><strong>backlight</strong> - 逆光拍摄模式</li>
+<li><strong>spotlight</strong> - 聚光灯拍摄模式</li>
+<li><strong>sports</strong> - 运动拍摄模式（高速快门等）</li>
+<li><strong>snow</strong> - 雪景优化拍摄模式</li>
+<li><strong>beach</strong> - 海滩优化拍摄模式</li>
+<li><strong>verylong</strong> - 长时间曝光拍摄模式</li>
+<li><strong>fixedfps</strong> - 帧约束拍摄模式</li>
+<li><strong>antishake</strong> - 防抖模式</li>
+<li><strong>fireworks</strong> - 烟火优化拍摄模式</li>
+</ul>
+<p>注意，不是所有的设置都会在对摄像头进行微调时得到相应作用。</p>
+<p><code>--awb, -awb</code> 设置自动白平衡<br>
+可能用到的参数为：</p>
+<ul>
+<li><strong>off</strong> - 关闭白平衡测算</li>
+<li><strong>auto</strong> - 自动模式（默认）</li>
+<li><strong>sun</strong> - 日光模式</li>
+<li><strong>cloud</strong> - 多云模式</li>
+<li><strong>shade</strong> - 阴影模式</li>
+<li><strong>tungsten</strong> - 钨灯模式</li>
+<li><strong>fluorescent</strong> - 荧光灯模式</li>
+<li><strong>incandescent</strong> - 白炽灯模式</li>
+<li><strong>flash</strong> - 闪光模式</li>
+<li><strong>horizon</strong> - 地平线模式</li>
+</ul>
+<p><code>--imxfx, -ifx</code> 设置图像特效<br>
+设置应用于图像上的特效</p>
+<ul>
+<li><strong>none</strong> - 无特效（默认）</li>
+<li><strong>negative</strong> - 反色图像</li>
+<li><strong>solarise</strong> - 曝光过度图像</li>
+<li><strong>posterize</strong> - 色调图像</li>
+<li><strong>whiteboard</strong> - 白板特效</li>
+<li><strong>blackboard</strong> - 黑板特效</li>
+<li><strong>sketch</strong> - 素描风格特效</li>
+<li><strong>denoise</strong> - 降噪图像</li>
+<li><strong>emboss</strong> - 浮雕图像</li>
+<li><strong>oilpaint</strong> - 油画风格特效</li>
+<li><strong>hatch</strong> - 草图特效</li>
+<li><strong>gpen</strong> - 马克笔特效</li>
+<li><strong>pastel</strong> - 柔化风格特效</li>
+<li><strong>watercolour</strong> - 水彩风格特效</li>
+<li><strong>film</strong> - 胶片颗粒风格特效</li>
+<li><strong>blur</strong> - 模糊图像</li>
+<li><strong>saturation</strong> - 色彩饱和图像</li>
+<li><strong>colourswap</strong> - 暂未可用</li>
+<li><strong>washedout</strong> - 暂未可用</li>
+<li><strong>posterise</strong> - 暂未可用</li>
+<li><strong>colourpoint</strong> - 暂未可用</li>
+<li><strong>colourbalance</strong> - 暂未可用</li>
+<li><strong>cartoon</strong> - 暂未可用</li>
+</ul>
+<p><code>--colfx, -cfx</code> 设置色彩特效<br>
+指定图像 U 和 V 通道的参数（范围 0 到 255）。例如：--colfx 128:128 将得到一张单色图像。</p>
+<p><code>--metering, -mm</code> 设置测光模式<br>
+为预览和捕捉指定测光模式</p>
+<ul>
+<li><strong>average</strong> - 全画面平衡测光</li>
+<li><strong>spot</strong> - 点测光</li>
+<li><strong>backlit</strong> - 模拟背光图像</li>
+<li><strong>matrix</strong> - 阵列测光</li>
+</ul>
+<p><code>--rotation, -rot</code> 设置图像旋转（0 - 359）<br>
+对取景器和最终得到的图像进行旋转。可以接受 0 以上任何值，但由于硬件限制，只支持 0、90、180、270 度。</p>
+<p><code>--hflip, -hf</code> 设置水平翻转<br>
+水平翻转预览和保存的图像。</p>
+<p><code>--vflip, -vf</code> 设置垂直翻转<br>
+垂直翻转预览和保存的图像。</p>
+<p><code>--roi, -roi</code> 设置传感器感光区域<br>
+允许指定用于预览和捕捉的源所使用的传感器区域。该功能中 x 和 y 参数指定了坐上角的坐标，以及定义了宽度和高度值，并且所有值都为标准化坐标（0.0 到 1.0）。那么，感光区域设置为横向和纵向都为一半，并且宽度和高度都为传感器的四分之一时，可以写为：<br>
+<code>-roi 0.5,0.5,0.25,0.25</code></p>
+<p><code>--shutter, -ss</code> 设置快门速度<br>
+设置快门的速度为指定的值（单位为微秒）。据当前的考证，目前未定义时，快门速度上限大约为 330000us（330ms 或 0.33s）。</p>
+<p><code>--camselect, -cs	Select &lt;camera number&gt;</code><br>
+Select camera number. Default 0</p>
+<h3 id="应用程序专有设置">应用程序专有设置</h3>
+<h4 id="raspistill">raspistill</h4>
+<p><code>--width, -w</code> 设置图像宽度</p>
+<p><code>--height, -h</code> 设置图像高度</p>
+<p><code>--quality, -q</code> 设置 JPEG 品质<br>
+品质为 100 时几乎等同于未压缩。75 相对是比较好的选择。</p>
+<p><code>--raw, -r</code> 向 JPEG 元数据中添加 RAW 信息<br>
+该参数将从摄像头获取到的 RAW 信息插入到 JPEG 元数据中。</p>
+<p><code>--output, -o</code> 输出文件名<br>
+指定输出的文件名。如果不指定，将不保存到文件。如果文件名为“-”，将输出发送至标准输出设备。</p>
+<p><code>--latest, -l</code> 链接最后一帧到文件名<br>
+基于该名称做一个指向最后一帧的文件系统链接。</p>
+<p><code>--verbose, -v</code> 在运行过程中输出详细信息<br>
+在程序运行过程中，输出调试/详细信息。</p>
+<p><code>--timeout, -t</code> 获取图片前的时间<br>
+程序将执行指定的时长，然后进行获取操作（前提是 output 已指定）。如果未指定，将设置为 5 秒。</p>
+<p><code>--timelapse, -tl</code> 间隔拍摄模式<br>
+指定多次拍摄之间所间隔的毫秒值。注意，您需要在文件名中加入 %04d 做为画面计数。</p>
+<p>例如：</p>
+<pre><code>-t 30000 -tl 2000 -o image%04d.jpg
+</code></pre>
+<p>You can also name the files with timestamp (-ts) or datetime(-dt)</p>
+<pre><code>-t 30000 -tl 2000 -ts -o image%d.jpg
+-t 30000 -tl 2000 -dt -o image2015%10d.jpg
+</code></pre>
+<p>将会在 30 秒的时间内，每两秒拍摄一次，并且将文件命名为：image1.jpg、image0002.jpg...image0015.jpg。注意 %04d 表示在文件名中数字部分加入前导零，使其成为 4 位数。例如，%08d 将生成 8 位数字。<br>
+如果间隔时间设置为 0，程序将不间断（取决于系统负担及存储速度）进行拍摄。不过需要注意，每次捕捉前还是会有 30ms 的最小暂停时间，用于曝光计算操作。</p>
+<p><code>--thumb, -th</code> 设置缩略图参数（x:y:quality）<br>
+允许指定插入到 JPEG 文件中缩略图信息。如果不指定，将为默认的 64x48 质量为 35 的缩略图。<br>
+<em>如果设置为 <code>--thumb none</code>，那么将不会向文件中插入缩略图信息。文件的尺寸也会稍微变小。</em></p>
+<p><code>--demo, -d</code> 运行演示模式 <milliseconds><br>
+该参数将循环使用所有摄像头参数，并且不会捕捉。而且无论是否完成所有的循环，在超时周期到达时都会停止演示操作。循环之前的时间需要设置毫秒值。</p>
+<p><code>--encoding, -e</code> 指定输出文件的编码<br>
+可用的参数为 jpg、bmp、gif、png。注意，未被硬件加速支持的图像格式（gif、png、bmp）在保存的时候要比 jpg 格式耗时更长。还需要注意，文件扩展名在编码时将被完全忽略。</p>
+<p><code>--exif, -x</code> 在捕捉的内容中加入 EXIF 标签（格式为 'key=value'）<br>
+允许在 JPEG 图像中插入特定的 EXIF 标签。您可以插入 32 条记录。这是非常实用的功能，比如插入 GPS 元数据。例如设置经度</p>
+<pre><code>--exif GPS.GPSLongitude=5/1,10/1,15/100
+</code></pre>
+<p>该命令将会设置经度为 5 度 10 分 15 秒。查看 EXIF 文档获得所有可用标签的详细信息。支持的标签如下：</p>
+<pre><code>IFD0.&lt;   or 
+IFD1.&lt;
+ImageWidth, ImageLength, BitsPerSample, Compression, PhotometricInterpretation, ImageDescription, Make, Model, StripOffsets, Orientation, SamplesPerPixel, RowsPerString, StripByteCounts, Xresolution, Yresolution, PlanarConfiguration, ResolutionUnit, TransferFunction, Software, DateTime, Artist, WhitePoint, PrimaryChromaticities, JPEGInterchangeFormat, JPEGInterchangeFormatLength, YcbCrCoefficients, YcbCrSubSampling, YcbCrPositioning, ReferenceBlackWhite, Copyright&gt;
+</code></pre>
+<pre><code>EXIF.&lt;
+ExposureTime, FNumber, ExposureProgram, SpectralSensitivity,          a
+ISOSpeedRatings, OECF, ExifVersion, DateTimeOriginal, DateTimeDigitized, ComponentsConfiguration, CompressedBitsPerPixel, ShutterSpeedValue, ApertureValue, BrightnessValue, ExposureBiasValue, MaxApertureValue, SubjectDistance, MeteringMode, LightSource, Flash, FocalLength, SubjectArea, MakerNote, UserComment, SubSecTime, SubSecTimeOriginal, SubSecTimeDigitized, FlashpixVersion, ColorSpace, PixelXDimension, PixelYDimension, RelatedSoundFile, FlashEnergy, SpacialFrequencyResponse, FocalPlaneXResolution, FocalPlaneYResolution, FocalPlaneResolutionUnit, SubjectLocation, ExposureIndex, SensingMethod, FileSource, SceneType, CFAPattern, CustomRendered, ExposureMode,                 
+WhiteBalance, DigitalZoomRatio, FocalLengthIn35mmFilm, SceneCaptureType, GainControl, Contrast, Saturation, Sharpness, DeviceSettingDescription, SubjectDistanceRange, ImageUniqueID&gt;
+</code></pre>
+<pre><code>GPS.&lt;
+GPSVersionID, GPSLatitudeRef, GPSLatitude, GPSLongitudeRef, GPSLongitude, GPSAltitudeRef, GPSAltitude, GPSTimeStamp, GPSSatellites, GPSStatus, GPSMeasureMode, GPSDOP, GPSSpeedRef, GPSSpeed, GPSTrackRef, GPSTrack, GPSImgDirectionRef, GPSImgDirection, GPSMapDatum, GPSDestLatitudeRef, GPSDestLatitude, GPSDestLongitudeRef, GPSDestLongitude, GPSDestBearingRef, GPSDestBearing, GPSDestDistanceRef, GPSDestDistance, GPSProcessingMethod, GPSAreaInformation, GPSDateStamp, GPSDifferential&gt;
+</code></pre>
+<pre><code>EINT.&lt;
+InteroperabilityIndex, InteroperabilityVersion, RelatedImageFileFormat, RelatedImageWidth, RelatedImageLength&gt;
+</code></pre>
+<p>注意，有部分标签将会由摄像头系统自动设置，但是会被命令行执行的 EXIF 操作所覆盖。</p>
+<p><em>如果设置为 <code>--exif none</code>，那么将不会向文件中插入 EXIF信息。文件的尺寸也会稍微变小。</em></p>
+<p><code>--fullpreview, -fp</code> 全预览模式<br>
+这将使预览窗口运行于全分辨率捕捉模式。该模式最大帧率为 15fps，并且预览将和捕捉拥有相同的可视区域。在不进行模式转换时，捕捉动作将进行的更迅速。该功能目前还在开发中。</p>
+<p><code>--keypress, -k</code> 按键模式</p>
+<p>摄像头会运行（-t）参数指定的时间，并且每次按下回车键时进行一次捕捉。在超时设置到达前按 X 键然后按回车键将退出程序。如果超时时间设置为 0，摄像头将一直工作，直到按下 X 键和回车键。使用 verbose（-v）参数可以显示输入确认提示，否则不会有任何提示。</p>
+<p><code>--signal, -s</code> 信号模式</p>
+<p>摄像头会运行（-t）参数指定的时间，并且每次向摄像进程发送 USR1 信号时进行一次捕捉。该操作可以通过发送 kill 命令进行终止。您可以使用 <code>ps ax</code> 命令找到摄像进程的 ID。</p>
+<pre><code class="language-bash">kill -USR1 &lt;process id of raspistill&gt;
+</code></pre>
+<h4 id="raspistillyuv">raspistillyuv</h4>
+<p><code>raspistillyuv</code> 的许多选项与 <code>raspistill</code> 是相同的。本节将对不同的部分进行讲解。</p>
+<p>不支持的选项：</p>
+<pre><code>--exif, --encoding, --thumb, --raw, --quality
+</code></pre>
+<p>扩展选项：</p>
+<p><code>--rgb, -rgb</code> 以 RGB888 形式保存未压缩数据<br>
+该选项强制图像保存为每个通道为 8 bits 的 RGB 格式，而不是 YUV420 格式。</p>
+<p>注意，在 <code>raspistillyuv</code> 中所保存的图像在缓冲区中水平尺寸封装为可被 16 整除（所以可能会在每行的结尾都会出现无用的字节以使宽度可被 16 整除）。缓冲区也会将垂直方向封装为可被 16 整除，在 YUV 模式中，每个 Y、U、V 平面都会使用该方式进行封装。</p>
+<h4 id="raspivid">raspivid</h4>
+<p><code>--width, -w</code> 设置图像宽度 <size><br>
+视频的宽度。范围为 64 到 1920。</p>
+<p><code>--height, -h</code> 设置图像高度 <size><br>
+视频的高度。范围为 64 到 1080。</p>
+<p><code>--bitrate, -b</code> 设置码率。<br>
+使用比特/秒为单位，所以 10Mbits/s 需要输入 -b 10000000。对于 H264 编码的 1080p30 高清视频，码率需要在 15Mbits/s 或以上。码率最大为 25Mbits/s（-b 25000000），但大于 17Mbits/s 时，在 1080p30 中并没有太大区别。</p>
+<p><code>--output -o</code> 输出文件名 <filename>。<br>
+指定输出的文件名。如果不指定，将不保存到文件。如果文件名为“-”，将输出发送至标准输出设备。</p>
+<p><code>--verbose, -v</code> 在运行过程中输出详细信息<br>
+在程序运行过程中，输出调试/详细信息。</p>
+<p><code>--timeout, -t</code> 获取图片前的时间<br>
+程序将执行指定的时长，然后进行获取操作（前提是 output 已指定）。如果未指定，将设置为 5 秒。设置为 0 意味着程序将一直运行，直到按下 Ctrl-C 才会停止。</p>
+<p><code>--demo, -d</code> 运行演示模式 <milliseconds><br>
+该参数将循环使用所有摄像头参数，并且不会捕捉。而且无论是否完成所有的循环，在超时周期到达时都会停止演示操作。循环之前的时间需要设置毫秒值。</p>
+<p><code>--framerate, -fps</code> 指定录制的视频每秒的画面数量<br>
+目前，最小的帧率为 2fps，最大为 30fps。似乎将来会有所改变。</p>
+<p><code>--penc, -e</code> 在编码完成后显示预览图像<br>
+开启该选项会在压缩完成后显示预览图像。显示在预览窗口中的图像会因为压缩的原因出现失真。正常情况下，预览将会显示摄像头输出的原始图像。该功能在未来的版本中可能不再可用。</p>
+<p><code>--intra, -g</code> 指定帧内刷新周期（关键帧率/画面组）<br>
+为录制的视频设置帧内刷新周期（画面组）率。H.264 视频在每个帧内刷新周期中都使用了 I-frame。该选项指定了每个 I-frame 之间帧的数量。数字越大，生成的视频尺寸越小，数字越小，视频流将越庞大，直至出错。Setting 0 will produce an initial I-frame and then just P-frames.</p>
+<p><em><code>--qp, -qp</code> 设置量化参数</em><br>
+<em>为视频流设置初始量化参数。范围从 10 到 40，并且对所录制视频的质量有极大的影响。值越大，质量越低，并且文件尺寸越小。码流设置为 0，并结合此参数一起使用，可用来设置一个完全动态码流的视频。</em></p>
+<p><code>--profile, -pf</code> 为录制的视频指定 H264 配置文件<br>
+为录制的视频指定 H264 配置文件。选项为：<code>baseline</code>、<code>main</code>、<code>high</code>。</p>
+<p><em><code>--inline, -ih</code> Insert PPS, SPS headers 插入 PPS，SPS 头</em><br>
+<em>强制视频流的 I-frame 都包含 PPS 和 SPS 头信息。某些视频封装格式需要该信息。例如 Apple HLS。这些头信息体积很小，所以不会让文件的尺寸增加太多。</em></p>
+<p><em><code>--timed, -td</code> 设置定时切换捕捉和暂停</em><br>
+<em>该选项可以使视频捕捉在特定的时间里暂停并重新开始记录。需要指定开启时间和关闭时间两个值。开启时间是视频的捕捉时长，关闭时间是暂停的时长。总录制时长是又超时选项进行定义的。注意，由于开启时间和关闭时间的设置原因，录制时长将略微比超时设置的时间要长</em>。</p>
+<p><em>例如：</em></p>
+<pre><code class="language-bash">raspivid -o test.h264 -t 25000 -timed 2500,5000
+</code></pre>
+<p><em>将进行 25 秒的录制操作。录制操作包括若干个 2500 毫秒（2.5 秒）录制和 5000 毫秒（5秒）暂停的操作，并且重复时长超过 20 秒。所以该录制过程中实际只录制了 10 秒的内容。包括 4 段 2.5 秒的视频片断 = 被若干个 5 秒钟暂停操作分隔开的 10 秒钟视频。</em></p>
+<p><em>2.5 秒录制 – 5 秒暂停 - 2.5 秒录制 – 5 秒暂停 -2.5 秒录制 – 5 秒暂停 – 2.5 秒录制</em></p>
+<p><em>录制了 25 秒。但仅有 10 秒的记录</em></p>
+<p><em><code>--keypress, -k</code> 使用回车键在录制和暂停两种状态间进行切换</em><br>
+<em>每次点击回车键将会暂停或重新开始录制进程。点击 X 键后点击回车键将停止录制并关闭程序。注意，超时设置值将影响录制结束时间，但仅在每次回车键点击后进行检查，所以如果系统正在等待按键操作，尽管超时设置已过期，录制进程退出前也会等待按键操作。</em></p>
+<p><em><code>--signal, -s</code> 使用 SIGUSR1 信号在录制和暂停两种状态间进行切换</em><br>
+<em>向 Raspivid 进程发送 USR1 信号来切换录制和暂停。该操作可以通过使用 kill 命令来实现。您可以使用 <code>pgrep raspivid</code> 命令找到 raspivid 的进程 ID。</em></p>
+<pre><code>kill -USR1
+</code></pre>
+<p><em>注意，超时设置值将影响录制结束时间，但仅在每次发送 SIGUSR1 信号后进行检查，所以如果系统正在等待信号，尽管超时设置已过期，录制进程退出前也会等待信号的发送操作。</em></p>
+<p><em><code>--initial, -i</code> 定义启动时的初始状态。</em><br>
+<em>定义摄像头初始状态为暂停或立即开始录像。选项可以为“record”（录像）或“pause”（暂停）。注意，如果您设置的超时时长很短，而且初始状态设置为“暂停”，那么将不会录制任何输出的内容。</em></p>
+<p><em><code>--segment, -sg</code> 将视频流分段存储到多个文件</em><br>
+<em>与存储在单个文件中不同，该参数将视频分段存储在以毫秒为单位所指定长度的数个文件中。为了将生成的文件命名为不同的名称，您需要在文件名中合适的位置添加 %04d 或类似的参数来让文件名中显示计数值。例如：</em></p>
+<pre><code>--segment 3000 -o video%04d.h264
+</code></pre>
+<p><em>将分割成每段长度 3000 毫秒（3 秒）并且命名为 video0001.h264，video0002.h264 等。每个段落都是可无缝连接的（段落之间不会丢帧），但每个片段的长度将取决于帧内周期值，原因是每个分割的段落都需要起始于 I-frame 处。因此，每个段落都会等于或大于指定的时间长度。</em></p>
+<p><em><code>--wrap, -wr</code> 设置最大分段数</em><br>
+<em>当输出分段视频时，该参数设置了最大分段数，并且达到最大值时，将返回到初始的第一个段落。该参数赋予了录制分段视频的功能，但是将覆盖之前生成的文件。所以，如果设置为 4，那么上面的例子中所生成的文件名为 video0001.h264，video0002.h264，video0003.h264，video0004.h264。而且，一旦 video0004.h264 文件录制完毕后，计数将回到 1，并且 video0001.h264 将被覆盖。</em></p>
+<p><em><code>--start, -sn</code> 设置初始段落数</em><br>
+<em>当输出分段视频时，该参数为初始的段落数，它允许从指定的段落恢复之前的录制操作。默认值为 1。</em></p>
+<h3 id="示例">示例</h3>
+<h4 id="图像捕捉">图像捕捉</h4>
+<p>默认情况下，传感器将以其支持的最高分辨率进行捕捉。可以在命令行中通过使用 <code>-w</code> 和 <code>-h</code> 参数进行更改。</p>
+<pre><code class="language-bash"># 两秒钟（时间单位为毫秒）延迟后拍摄一张照片，并保存为 image.jpg
+raspistill -t 2000 -o image.jpg
+</code></pre>
+<pre><code class="language-bash"># 拍摄一张自定义大小的照片。
+raspistill -t 2000 -o image.jpg -w 640 -h 480
+</code></pre>
+<pre><code class="language-bash"># 降低图像质量，减小文件尺寸
+raspistill -t 2000 -o image.jpg -q 5
+</code></pre>
+<pre><code class="language-bash"># 强制使预览窗口出现在坐标为 100,100 的位置，并且尺寸为宽 300 和高 200 像素。
+raspistill -t 2000 -o image.jpg -p 100,100,300,200
+</code></pre>
+<pre><code class="language-bash"># 禁用预览窗口
+raspistill -t 2000 -o image.jpg -n
+</code></pre>
+<pre><code class="language-bash"># 将图像保存为 PNG 文件（无损压缩格式，但是要比 JPEG 速度慢）。注意，当选择图像编码时，文件扩展名将被忽略。
+raspistill -t 2000 -o image.png –e png
+</code></pre>
+<pre><code class="language-bash"># 向 JPEG 文件中添加一些 EXIF 信息。该命令将会把作者名称标签设置为 Dreamcolor，GPS 海拔高度为 123.5米。Note that if setting GPS tags you should set as a minimum GPSLatitude, GPSLatitudeRef, GPSLongitude, GPSLongitudeRef, GPSAltitude and GPSAltitudeRef.
+raspistill -t 2000 -o image.jpg -x IFD0.Artist=Dreamcolor -x GPS.GPSAltitude=1235/10
+</code></pre>
+<pre><code class="language-bash"># 设置浮雕风格图像特效
+raspistill -t 2000 -o image.jpg -ifx emboss
+</code></pre>
+<pre><code class="language-bash"># 设置 YUV 图像的 U 和 V 通道为指定的值（128:128 为黑白图像）
+raspistill -t 2000 -o image.jpg -cfx 128:128
+</code></pre>
+<pre><code class="language-bash"># 仅显示两秒钟预览图像，而不对图像进行保存。
+raspistill -t 2000
+</code></pre>
+<pre><code class="language-bash"># 间隔获取图片，在 10 分钟（10 分钟 = 600000 毫秒）的时间里，每 10 秒获取一张，并且命名为 image_number_001_today.jpg，image_number_002_today.jpg... 的形式，并且最后一张照片将命名为 latest.jpg。
+raspistill -t 600000 -tl 10000 -o image_num_%03d_today.jpg -l latest.jpg
+</code></pre>
+<pre><code class="language-bash"># 获取一张照片并发送至标准输出设备
+raspistill -t 2000 -o -
+</code></pre>
+<pre><code class="language-bash"># 获取一张照片并保存为一个文件
+raspistill -t 2000 -o - &gt; my_file.jpg
+</code></pre>
+<pre><code class="language-bash">#摄像头一直工作，当按下回车键时获取一张照片。
+raspistill -t 0 -k -o my_pics%02d.jpg
+</code></pre>
+<h4 id="视频捕捉">视频捕捉</h4>
+<p>图像尺寸和预览设置与图像捕捉相同。录制的视频默认尺寸为 1080p（1920x1080）</p>
+<pre><code class="language-bash"># 使用默认设置录制一段 5 秒钟的视频片段（1080p30）
+raspivid -t 5000 -o video.h264
+</code></pre>
+<pre><code class="language-bash"># 使用指定码率（3.5Mbits/s）录制一段 5 秒钟的视频片段
+raspivid -t 5000 -o video.h264 -b 3500000
+</code></pre>
+<pre><code class="language-bash"># 使用指定帧率（5fps）录制一段 5 秒钟的视频片段
+raspivid -t 5000 -o video.h264 -f 5
+</code></pre>
+<pre><code class="language-bash"># 发送到标准输出设备一段 5 秒钟经过编码的摄像头流图像
+raspivid -t 5000 -o -
+</code></pre>
+<pre><code class="language-bash"># 保存到文件一段 5 秒钟经过编码的摄像头流图像
+raspivid -t 5000 -o - &gt; my_file.h264
+</code></pre>
+<h3 id="shell-错误代码">Shell 错误代码</h3>
+<p>应用程序将返回完整的错误代码。可能出现的错误代码为：</p>
+<ul>
+<li>EX_OK 0 应用程序运行成功</li>
+<li>EX_USAGE 64 错误的命令行参数</li>
+<li>EX_SOFTWARE 70 软件或摄像头错误</li>
+<li>130 由于按下 Ctrl-C，应用程序终止运行</li>
+</ul>
+<h2 id="扩展内容">扩展内容</h2>
+<h3 id="mp4box">MP4Box</h3>
+<p>raspivid 通常会将录制的视频保存为 .h264 格式的文件。而我们使用的很多播放器可能无法正常播放该格式的视频文件。这就需要我们将生成的 .h264 格式的文件封装到播放器能够识别的视频容器格式中（比如封装为 mp4 格式）。有很多视频处理软件可以达到这个目的，您也可以直接在 Raspberry Pi 上直接进行封装。这里介绍的是“gpac”中的“MP4Box”。安装和使用的方法如下：</p>
+<pre><code class="language-bash">sudo apt-get update
+sudo apt-get install gpac
+
+MP4Box -add filename.h264 filename.mp4
+</code></pre>
+<h2 id="相关网站">相关网站</h2>
+<p>原文地址：<a href="https://github.com/raspberrypi/userland/blob/master/host_applications/linux/apps/raspicam/README.md" title="RaspiCam Documentation">RaspiCam Documentation</a><br>
+项目地址：<a href="https://github.com/raspberrypi/userland/tree/master/host_applications/linux/apps/raspicam" title="RaspiCam">RaspiCam</a><br>
+本文链接：<a href="http://dreamcolor.net/20130524/raspicam-documentation" title="Dreamcolor Said">Raspberry Pi 摄像头模块应用程序文档翻译</a></p>
+<p>如需转载，请注明出处。谢谢……</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://dreamcolor.net/tag/raspberry-pi/" class="tag">
+                    Raspberry Pi
+                  </a>
+                
+                  <a href="https://dreamcolor.net/tag/camera/" class="tag">
+                    Camera
+                  </a>
+                
+                  <a href="https://dreamcolor.net/tag/featured/" class="tag">
+                    Featured
+                  </a>
+                
+                  <a href="https://dreamcolor.net/tag/raspicam/" class="tag">
+                    RaspiCam
+                  </a>
+                
+              </div>
+            
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+
+  </body>
+</html>

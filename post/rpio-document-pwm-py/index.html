@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>RPIO 文档翻译 - RPIO.PWM（利用 DMA 为 Raspberry Pi 实现 PWM） | Dreamcolor&#39;s Cote</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://dreamcolor.net/favicon.ico?v=1618554432011">
+<link rel="stylesheet" href="https://dreamcolor.net/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="更新日志：
+2013 年 6 月 4 日更新：根据官方文档完成了初步翻译。
+本文会在适当的时间里进行增删改等操作，如果您对该文感兴趣，可以仅收藏本页。
+本文链接：RPIO 文档翻译 - RPIO.PWM（利用 DMA 为 Raspberry..." />
+    <meta name="keywords" content="GPIO,Python,Raspberry Pi,DMA,PWM,RPIO" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://dreamcolor.net">
+        <img src="https://dreamcolor.net/images/avatar.png?v=1618554432011" class="site-logo">
+        <h1 class="site-title">Dreamcolor&#39;s Cote</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            Home
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            Archives
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            Tags
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            About
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/Dreamcolor" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://twitter.com/Dreamcolor" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="http://weibo.cn/dreamcolor" target="_blank">
+            <i class="fab fa-weibo"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      谗夫毁士，如寸云蔽日，不久自明；<br/>媚子阿人，似隙风侵肌，不觉其损！
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://dreamcolor.net" target="_blank">Dreamcolor's Cote</a> | <a class="rss" href="https://dreamcolor.net/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">RPIO 文档翻译 - RPIO.PWM（利用 DMA 为 Raspberry Pi 实现 PWM）</h2>
+            <div class="post-date">2013-06-04</div>
+            
+            <div class="post-content" v-pre>
+              <p><strong>更新日志：</strong><br>
+2013 年 6 月 4 日更新：根据官方文档完成了初步翻译。<br>
+本文会在适当的时间里进行增删改等操作，如果您对该文感兴趣，可以仅收藏本页。<br>
+本文链接：<a href="http://dreamcolor.net/20130604/rpio-document-pwm-py/" title="RPIO 文档翻译 - RPIO.PWM（利用 DMA 为 Raspberry Pi 实现 PWM）">RPIO 文档翻译 - RPIO.PWM（利用 DMA 为 Raspberry Pi 实现 PWM）</a></p>
+<!-- more -->
+<p><code>RPIO.PWM</code> 提供了利用 DMA 为 Raspberry Pi 实现 PWM 功能，使用板载的半硬件脉宽调制（PWM ）模块可精确到 1µs（微秒）。</p>
+<p>在 <code>RPIO.PWM</code> 中，您可以随意使用所有 15 个 DMA 通道，并且每个通道中可以使用任意个数 GPIO。当通过 DMA 实现 PWM 时，<code>RPIO.PWM</code> 几乎不消耗 CPU 资源，并且可以产生稳定的脉冲且分辨率非常高。<code>RPIO.PWM</code> 是使用 C 语言（<a href="https://github.com/metachris/RPIO/blob/master/source/c_pwm/">源代码</a>）编写的；可通过提供的封装包在 Python 中使用，甚至可以直接在您的 C 语言代码中使用。</p>
+<p><code>RPIO.PWM</code> 提供了手动控制任何东西的底层方案，甚至还为特殊用途准备的简化 PWM 辅助类库（比如：<code>RPIO.PWM.Servo</code>）。该模块目前还处于 beta 阶段，请将反馈发送至 chris@linuxuser.at。而且目前仅支持 BCM GPIO 编号方式。</p>
+<h2 id="示例">示例</h2>
+<p><code>PWM.Servo</code> 使用示例（使用默认的 20ms 子循环时长和默认的 10µs 脉宽增量粒度）：</p>
+<pre><code class="language-python">from RPIO import PWM
+
+servo = PWM.Servo()
+
+# 设置 GPIO 17 上的 servo 为 1200µs（1.2ms）
+servo.set_servo(17, 1200)
+
+# 设置 GPIO 17 上的 servo 为 2000µs（2.0ms）
+servo.set_servo(17, 2000)
+
+# 清除 GPIO 17 上的 servo
+servo.stop_servo(17)
+</code></pre>
+<p>使用底层 PWM 方案的示例：</p>
+<pre><code class="language-python">from RPIO import PWM
+
+# 设置 PWM 和 DMA 使用通道 0
+PWM.setup()
+PWM.init_channel(0)
+
+# 为子循环添加脉冲值
+PWM.add_channel_pulse(0, 17, 0, 50)
+PWM.add_channel_pulse(0, 17, 100, 50)
+
+# 停止通道 0 中指定 GPIO 上的 PWM
+PWM.clear_channel_gpio(0, 17)
+
+# 关闭所有 PWM 和 DMA 操作
+PWM.cleanup()
+</code></pre>
+<h2 id="rpiopwmservo">RPIO.PWM.Servo</h2>
+<p><code>RPIO.PWM.Servo</code> 类库的详细描述（来源自 <code>$ pydoc RPIO.PWM.Servo</code>）：</p>
+<pre><code>Servo 类库
+
+# 方案定义：
+
+__init__(self, dma_channel=0, subcycle_time_us=20000, pulse_incr_us=10)
+# 请确认 PWM 设置了正确的增量粒度和子循环时间。
+
+set_servo(self, gpio, pulse_width_us)
+# 为 GPIO 设置每个子循环重复一次的脉宽（默认为 20ms）。
+
+stop_servo(self, gpio)
+# 停止该 GPIO 的 servo 操作。
+</code></pre>
+<h2 id="rpiopwm">RPIO.PWM</h2>
+<p>底层 PWM 方案文档（来源自 <code>$ pydoc RPIO.PWM</code>）：</p>
+<pre><code>函数
+
+add_channel_pulse(dma_channel, gpio, start, width)
+# 为某个 DMA 通道中指定的 GPIO 设置脉冲（添加到子循环中）
+
+cleanup()
+# 停止所有 PWM 和 DMA 操作
+
+clear_channel(channel)
+# 清空某个通道中所有脉冲值
+
+clear_channel_gpio(channel, gpio)
+# 清空该 DMA 通道中指定 GPIO 上的值
+
+get_channel_subcycle_time_us(channel)
+# 以微秒为单位返回该通道子循环时间
+
+get_pulse_incr_us()
+# 以微秒为单位返回当前设置的宽脉增量粒度
+
+init_channel(channel, subcycle_time_us=20000)
+# 以微秒为单位设置某通道为特定的子循环时间
+
+is_channel_initialized(channel)
+# 如果该通道被初始化则返回 1，否则返回 0
+
+is_setup()
+# 如果调用了 setup(..) 则返回 1，否则返回 0
+
+print_channel(channel)
+# 打印特定通道的信息到标准输出设备
+
+set_loglevel(level)
+# 为该 PWM 模块设置 loglevel。
+# PWM.LOG_LEVEL_DEBUG 将记录所有信息，PWM.LOG_LEVEL_ERRORS 将只记录错误信息。
+
+setup(pulse_incr_us=10, delay_hw=0)
+# 任何通道工作之前，都需要调用一次 Setup。
+# 可选参数：
+# pulse_incr_us：宽脉增量粒度（默认为 10us）
+# delay_hw：PWM.DELAY_VIA_PWM（默认）或 PWM.DELAY_VIA_PCM
+
+常量
+
+DELAY_VIA_PCM = 1
+DELAY_VIA_PWM = 0
+LOG_LEVEL_DEBUG = 0
+LOG_LEVEL_ERRORS = 1
+PULSE_WIDTH_INCREMENT_GRANULARITY_US_DEFAULT = 10
+SUBCYCLE_TIME_US_DEFAULT = 20000
+VERSION = '0.9.1'
+</code></pre>
+<h2 id="扩展讲解">扩展讲解</h2>
+<p>可以查看 <a href="https://github.com/metachris/RPIO/blob/master/source/c_pwm/">Github 上的 C 语言源程序</a>获得更多细节。</p>
+<h3 id="子循环">子循环</h3>
+<p>每个 DMA 通道都设置了一个特定的子循环，包括添加了脉冲设置，并且会反复执行。伺服系统，通常使用 20ms 的子循环时间，并且每秒重复 50 次。您可以为多个 GPIO 添加脉冲设置，也可以为某 GPIO 设置多个脉冲值。子循环时间不能低于 2ms。</p>
+<p>如需获得更多关于子循环的信息，可以看下面的示例。左边的示波器图像放大显示了一个子循环，右边的图像整体显示了它们的重复情况。</p>
+<h3 id="脉宽增量粒度">脉宽增量粒度</h3>
+<p>脉宽增量粒度（默认为 10µs）应用于所有 DMA 通道（当使用 PWM 计时硬件时）。通过制定一个 <code>start</code> 和 <code>width</code> 参数，为子循环添加脉冲设置，两者都可以拥有多种粒度。例如，设置 500µs 的脉冲值以及粒度设置为 10µs，那么您将需要设置脉宽为 50（50 * 10µs = 500µs）。</p>
+<p>由于使用的是 PWM 硬件，脉宽增量粒度是<strong>系统的全局设置</strong>，因此您不能在同一时间内使用不同的粒度设置，尽管在不同的进程中也是如此。</p>
+<h2 id="示波器示例">示波器示例</h2>
+<p>在示波器图像中，GPIO 15 为蓝色的通道，GPIO 17 为黄色的通道。左边的示波器图像显示单个子循环，右边的图像整体显示了它们的重复情况。首先我们将 PWM.Servo 的子循环设置为默认的 20ms，以及脉宽增量粒度为 10µs：</p>
+<pre><code class="language-python">from RPIO import PWM
+servo = PWM.Servo()
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://dreamcolor.net/post-images/1616902719959.png" alt="" loading="lazy"></figure>
+<p>现在设置 GPIO 15 上每 20ms 脉冲为 4000us（4ms）：</p>
+<pre><code class="language-python">servo.set_servo(15, 4000)
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://dreamcolor.net/post-images/1616902736697.png" alt="" loading="lazy"></figure>
+<p>现在设置 GPIO 17 上的脉冲为 1000µs（1ms）</p>
+<pre><code class="language-python">servo.set_servo(17, 1000)
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="https://dreamcolor.net/post-images/1616902750657.png" alt="" loading="lazy"></figure>
+<p>我们可以使用底层 PWM 模块为子循环进一步设置脉冲。该设置完成了脉宽增量粒度的设置（<code>start=200*10µs=2000µs, width=100*10µs=1000µs</code>）：</p>
+<pre><code class="language-python">PWM.add_channel_pulse(0, 17, start=200, width=100)
+</code></pre>
+<figure data-type="image" tabindex="4"><img src="https://dreamcolor.net/post-images/1616902762824.png" alt="" loading="lazy"></figure>
+<p>原文地址：<a href="http://pythonhosted.org/RPIO/pwm_py.html" title="RPIO.PWM, PWM via DMA for the Raspberry Pi">RPIO.PWM, PWM via DMA for the Raspberry Pi</a><br>
+项目地址：<a href="http://pythonhosted.org/RPIO/" title="RPIO’s documentation!">RPIO’s documentation!</a></p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://dreamcolor.net/tag/gpio/" class="tag">
+                    GPIO
+                  </a>
+                
+                  <a href="https://dreamcolor.net/tag/python/" class="tag">
+                    Python
+                  </a>
+                
+                  <a href="https://dreamcolor.net/tag/raspberry-pi/" class="tag">
+                    Raspberry Pi
+                  </a>
+                
+                  <a href="https://dreamcolor.net/tag/dma/" class="tag">
+                    DMA
+                  </a>
+                
+                  <a href="https://dreamcolor.net/tag/pwm/" class="tag">
+                    PWM
+                  </a>
+                
+                  <a href="https://dreamcolor.net/tag/rpio/" class="tag">
+                    RPIO
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://dreamcolor.net/post/rpio-document-rpio-py/">
+                  <h3 class="post-title">
+                    RPIO 文档翻译 - RPIO（Python 模块）
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+
+  </body>
+</html>
