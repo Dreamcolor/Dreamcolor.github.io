@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://dreamcolor.net</id>
     <title>Dreamcolor&apos;s Cote</title>
-    <updated>2021-04-16T06:31:06.678Z</updated>
+    <updated>2021-04-16T08:24:46.707Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://dreamcolor.net"/>
     <link rel="self" href="https://dreamcolor.net/atom.xml"/>
@@ -10,6 +10,16 @@
     <logo>https://dreamcolor.net/images/avatar.png</logo>
     <icon>https://dreamcolor.net/favicon.ico</icon>
     <rights>All rights reserved 2021, Dreamcolor&apos;s Cote</rights>
+    <entry>
+        <title type="html"><![CDATA[Hexo 又换成了 Gridea]]></title>
+        <id>https://dreamcolor.net/post/hexo-to-gridea/</id>
+        <link href="https://dreamcolor.net/post/hexo-to-gridea/">
+        </link>
+        <updated>2021-04-16T08:17:12.000Z</updated>
+        <content type="html"><![CDATA[<p>这貌似是历史 N 久后才又更新了一下。之前从使用了多年的 WordPress 换成了 Hexo，然后就没怎么更新过，好像没有心情折腾。而且总感觉发个文章还西药弄一堆环境略显麻烦。那之后又尝试过 Hugo 和其它几个生成静态页面的博客程序，到底也没找到个方便免折腾的。后来发现 Gridea 这货图形化界面的操作，而且部署也非常简单。这次换了，希望能够重新燃起写点儿东西的欲望吧。</p>
+<p>我的网站貌似也就我自己看了，并且暂时也没评论功能，基本的互动都没有了。先放着吧，也不知道写这些是给谁看的。哈……</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[我又回来了]]></title>
         <id>https://dreamcolor.net/post/back-again/</id>
@@ -728,126 +738,6 @@ GPIO.add_event_detect(channel, GPIO.RISING, callback=my_callback, bouncetime=200
 </code></pre>
 <h2 id="相关网站">相关网站</h2>
 <p>原文地址：<a href="https://sourceforge.net/p/raspberry-gpio-python/wiki/Inputs/" title="RPi.GPIO module Inputs">RPi.GPIO module Inputs</a><br>
-项目地址：<a href="https://sourceforge.net/p/raspberry-gpio-python/" title="RPi.GPIO">RPi.GPIO</a></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[RPi.GPIO 模块使用基础]]></title>
-        <id>https://dreamcolor.net/post/rpi-gpio-module-basics/</id>
-        <link href="https://dreamcolor.net/post/rpi-gpio-module-basics/">
-        </link>
-        <updated>2013-05-25T07:57:55.000Z</updated>
-        <summary type="html"><![CDATA[<p><strong>更新日志：</strong></p>
-<ul>
-<li>2016 年 12 月 30 日更新：根据 2016 年 1 月 1 日更新的官方文档补充了缺失部分翻译。</li>
-<li>2013 年 5 月 25 日更新：根据 2013 年 3 月 30 日更新的官方文档完成了初步翻译。</li>
-</ul>
-]]></summary>
-        <content type="html"><![CDATA[<p><strong>更新日志：</strong></p>
-<ul>
-<li>2016 年 12 月 30 日更新：根据 2016 年 1 月 1 日更新的官方文档补充了缺失部分翻译。</li>
-<li>2013 年 5 月 25 日更新：根据 2013 年 3 月 30 日更新的官方文档完成了初步翻译。</li>
-</ul>
-<!-- more -->
-<p>本文会在适当的时间里进行增删改等操作，如果您对该文感兴趣，可以仅收藏本页。</p>
-<p>本文链接：<a href="http://dreamcolor.net/20130525/rpi-gpio-module-basics/" title="RPi.GPIO 模块使用基础">RPi.GPIO 模块使用基础</a></p>
-<p>该程序包提供了一个在 Raspberry Pi 中控制 GPIO 的类。</p>
-<p>注意，该模块不适合应用到追求实时性或计数周期的应用中。这是由于您无法预测 Python 何时繁忙，以及资源回收的时间。而且它是运行在基于 Linux 核心的系统中，也不合适用于实时应用 - 原因在于其它进程可能获得更高的 CPU 优先级。如果您一定要追求实时操作的性能，可以考虑购买一块 Arduino 主板 <a href="http://www.arduino.cc" title="Arduino">http://www.arduino.cc</a>!</p>
-<p>本文是 RPi.GPIO 模块文档系列文章的第一篇，除本文外还包括以下几篇：</p>
-<ul>
-<li><a href="http://dreamcolor.net/20130527/rpi-gpio-module-inputs/" title="使用 RPi.GPIO 模块的输入（Input）功能">使用 RPi.GPIO 模块的输入（Input）功能</a></li>
-<li><a href="http://dreamcolor.net/20130527/rpi-gpio-module-outputs/" title="使用 RPi.GPIO 模块的输出（Output）功能">使用 RPi.GPIO 模块的输出（Output）功能</a></li>
-<li><a href="http://dreamcolor.net/20130527/rpi-gpio-module-pwm/" title="使用 RPi.GPIO 模块的脉宽调制（PWM）功能">使用 RPi.GPIO 模块的脉宽调制（PWM）功能</a></li>
-<li><a href="http://dreamcolor.net/20140316/rpi-gpio-module-checking-function-of-gpio-channels/" title="检查 GPIO 通道的用途">检查 GPIO 通道的用途</a></li>
-</ul>
-<h2 id="导入模块">导入模块</h2>
-<p>导入 RPi.GPIO 模块：</p>
-<pre><code class="language-python">import RPi.GPIO as GPIO
-</code></pre>
-<p>通过该操作，您可以将模块名称映射为 GPIO，以便接下来您其它脚本进行使用。</p>
-<p>导入模块并检查它是否导入成功，可以尝试：</p>
-<pre><code class="language-python">import RPi.GPIO as GPIO
-except RuntimeError:
-print(“导入 RPi.GPIO 时出现错误！这可能由于没有超级用户权限造成的。您可以使用 'sudo' 来运行您的脚本。”)
-</code></pre>
-<h2 id="针脚编号">针脚编号</h2>
-<p>目前有两种方式可以通过 RPi.GPIO 对 Raspberry Pi 上的 IO 针脚进行编号。</p>
-<p>第一种方式是使用 BOARD 编号系统。该方式参考 Raspberry Pi 主板上 P1 接线柱的针脚编号。使用该方式的优点是无需考虑主板的修订版本，您硬件始终都是可用的状态。您将无需从新连接线路和更改您的代码。</p>
-<p>第二种方式是使用 BCM 编号。这是一种较低层的工作方式 - 该方式参考 Broadcom SOC 的通道编号。使用过程中，您始终要保证主板上的针脚与图表上标注的通道编号相对应。您的脚本可能在 Raspberry Pi 主板进行修订版本更新时无法工作。</p>
-<p>指定您所使用的方式（必须指定）：</p>
-<pre><code class="language-python">GPIO.setmode(GPIO.BOARD)
-</code></pre>
-<p>或者</p>
-<pre><code class="language-python">GPIO.setmode(GPIO.BCM)
-</code></pre>
-<h2 id="警告">警告</h2>
-<p>可能您的 Raspberry Pi 的 GPIO 上同时有多个脚本/循环。因此，如果 RPi.GPIO 检测到某个针脚被设置为其它用途而非默认的状态（默认为输入），您会在尝试配置某脚本时得到警告消息。</p>
-<p>禁用该警告消息：</p>
-<pre><code class="language-python">GPIO.setwarnings(False)
-</code></pre>
-<h2 id="配置通道">配置通道</h2>
-<p>您需要为每个用于输入或输出的针脚配置通道。</p>
-<p>配置为输入的通道：</p>
-<pre><code class="language-python">GPIO.setup(channel, GPIO.IN)
-</code></pre>
-<p>（通道编号是基于您所使用的编号系统所指定的（BOARD 或 BCM）。）</p>
-<p>更多关于输入通道的进阶信息可以在<a href="http://dreamcolor.net/20130527/rpi-gpio-module-inputs/" title="使用 RPi.GPIO 模块的输入（Input）功能">这里</a>找到。</p>
-<p>配置为输出的通道：</p>
-<pre><code class="language-python">GPIO.setup(channel, GPIO.OUT)
-</code></pre>
-<p>（通道编号是基于您所使用的编号系统所指定的（BOARD 或 BCM）。）</p>
-<p>您还可以指定输出通道的初始值：</p>
-<pre><code class="language-python">GPIO.setup(channel, GPIO.OUT, initial=GPIO.HIGH)
-</code></pre>
-<h2 id="配置多个通道">配置多个通道</h2>
-<p>您可以同时配置多个通道。<br>
-例如：</p>
-<pre><code class="language-python">chan_list = [11,12]    # 根据您的需要添加任意数量的通道！
-                       # 您可以使用元组的方式进行添加，例如：
-                       # chan_list = (11,12)
-GPIO.setup(chan_list, GPIO.OUT)
-</code></pre>
-<h2 id="输入">输入</h2>
-<p>读取 GPIO 针脚的值：</p>
-<pre><code class="language-python">GPIO.input(channel)
-</code></pre>
-<p>（通道编号是基于您所使用的编号系统所指定的（BOARD 或 BCM）。）这将返回 0 / GPIO.LOW / False 或者 1 / GPIO.HIGH / True。</p>
-<h2 id="输出">输出</h2>
-<p>设置 GPIO 针脚的输出状态：</p>
-<pre><code class="language-python">GPIO.output(channel, state)
-</code></pre>
-<p>（通道编号是基于您所使用的编号系统所指定的（BOARD 或 BCM）。）</p>
-<p>状态可以为 0 / GPIO.LOW / False 或者 1 / GPIO.HIGH / True。</p>
-<h2 id="输出到多个通道">输出到多个通道</h2>
-<p>您可以同时输出到多个通道。<br>
-例如：</p>
-<pre><code class="language-python">chan_list = [11,12]                             # 可以使用元组
-GPIO.output(chan_list, GPIO.LOW)                # 设置所有通道为 GPIO.LOW
-GPIO.output(chan_list, (GPIO.HIGH, GPIO.LOW))   # 设置第一个为 HIGH 第二个为 LOW
-</code></pre>
-<h2 id="清理">清理</h2>
-<p>在任何程序结束后，请养成清理用过的资源的好习惯。使用 RPi.GPIO 也同样需要这样。恢复所有使用过的通道状态为输入，您可以避免由于短路意外损坏您的 Raspberry Pi 针脚。注意，该操作仅会清理您的脚本使用过的 GPIO 通道。</p>
-<p>在您的脚本结束后进行清理：</p>
-<pre><code class="language-python">GPIO.cleanup()
-</code></pre>
-<p>某些场合，程序退出时，您可能不想清理所有通道。您可以对指定通道进行清理。可以使用列表或元组方式：</p>
-<pre><code class="language-python">GPIO.cleanup(channel)
-GPIO.cleanup( (channel1, channel2) )
-GPIO.cleanup( [channel1, channel2] )
-</code></pre>
-<h2 id="raspberry-pi-修订版本和-rpigpio-版本">Raspberry Pi 修订版本和 RPi.GPIO 版本</h2>
-<p>检查您的树莓派的信息：</p>
-<pre><code class="language-python">GPIO.RPI_INFO
-</code></pre>
-<p>检测 Raspberry Pi 主板的修订版本：</p>
-<pre><code class="language-python">GPIO.RPI_INFO['P1_REVISION']
-GPIO.RPI_REVISION
-</code></pre>
-<p>检测 RPi.GPIO 的版本：</p>
-<pre><code class="language-python">GPIO.VERSION
-</code></pre>
-<h2 id="相关网站">相关网站</h2>
-<p>原文地址：<a href="https://sourceforge.net/p/raspberry-gpio-python/wiki/BasicUsage/" title="RPi.GPIO module basics">RPi.GPIO module basics</a><br>
 项目地址：<a href="https://sourceforge.net/p/raspberry-gpio-python/" title="RPi.GPIO">RPi.GPIO</a></p>
 ]]></content>
     </entry>
