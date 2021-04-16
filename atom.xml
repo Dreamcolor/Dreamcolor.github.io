@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://Dreamcolor.github.io</id>
+    <id>https://dreamcolor.net</id>
     <title>Dreamcolor&apos;s Cote</title>
-    <updated>2021-04-16T04:00:33.826Z</updated>
+    <updated>2021-04-16T04:07:55.832Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://Dreamcolor.github.io"/>
-    <link rel="self" href="https://Dreamcolor.github.io/atom.xml"/>
+    <link rel="alternate" href="https://dreamcolor.net"/>
+    <link rel="self" href="https://dreamcolor.net/atom.xml"/>
     <subtitle>谗夫毁士，如寸云蔽日，不久自明；&lt;br/&gt;
 媚子阿人，似隙风侵肌，不觉其损！</subtitle>
-    <logo>https://Dreamcolor.github.io/images/avatar.png</logo>
-    <icon>https://Dreamcolor.github.io/favicon.ico</icon>
+    <logo>https://dreamcolor.net/images/avatar.png</logo>
+    <icon>https://dreamcolor.net/favicon.ico</icon>
     <rights>All rights reserved 2021, Dreamcolor&apos;s Cote</rights>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://Dreamcolor.github.io/post/hello-gridea/</id>
-        <link href="https://Dreamcolor.github.io/post/hello-gridea/">
+        <id>https://dreamcolor.net/post/hello-gridea/</id>
+        <link href="https://dreamcolor.net/post/hello-gridea/">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
